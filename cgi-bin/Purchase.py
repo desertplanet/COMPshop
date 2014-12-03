@@ -22,7 +22,8 @@ def generateError():
 
 	f.write(message)
 	f.close()
+	
+	webbrowser.open_new_tab('cgi-bin/error.html')
 
-	webbrowser.open('error.html', new=2, autoraise=True)
-
+webbrowser.open('www.google.com')
 generateError()	
