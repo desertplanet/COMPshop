@@ -1,11 +1,20 @@
 <title>catalogue</title>
 <style type="text/css"></style>
-</head>
+<head>Catalogue</head>
 <body>
+<table>
+	<tr>
+		<td><img src = "http://cdn.cutestpaw.com/wp-content/uploads/2011/11/A-FIST-FULL-OF-PUPPY-l.jpg" /></td>
+	</tr>
+	<tr>
+		<td>Number in stock: 4</td>
+		<td><form action = ""><input name = "check" type = "checkbox"></form></td>
+		<td><form action = ""><input name = "num" type = "text" value = "Enter number to request"></form></td>
+	</tr>
+</table>
 <form name="submit" method="post" action="Purchase.py">
 <input name="submit" type="submit" value="buy me">
+<input name = "username" type = "hidden" value = "tester">
 </form>
-
-
 </body>
 </html>
