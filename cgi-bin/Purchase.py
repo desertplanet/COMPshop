@@ -16,14 +16,14 @@ def generateError():
 	<head></head>
 	<body>
 	<p>Since you are not logged in, your order could not be processed.</p>
-	<p>Please log in by clicking <a href = login.html>here</a>.</p>
+	<p>Please log in by clicking <a href = ../login.html>here</a>.</p>
 	</body>
 	</html>"""
 
 	f.write(message)
 	f.close()
-	
-	webbrowser.open_new_tab('cgi-bin/error.html')
+	url = " cgi-bin/error.html"	
+	webbrowser.open(url)
 
 webbrowser.open('www.google.com')
 generateError()	
