@@ -3,6 +3,7 @@
 
 # enable debugging
 import cgitb
+cgitb.enable()
 
 def generateBill():
 	
