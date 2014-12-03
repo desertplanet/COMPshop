@@ -43,7 +43,7 @@ print ('Sorry that username is taken. Please choose another one. </br>
 
 }
 else{
-open(MEMBERS,'>>../members.csv') or die "oops";
+open(MEMBERS,'>>../Members.csv') or die "oops";
 print MEMBERS "$new\n";
 close (MEMBERS);
 }
