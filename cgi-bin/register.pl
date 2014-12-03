@@ -1,8 +1,7 @@
 #!/usr/bin/perl
 use CGI;
-#use Text::CSV;
 $q = new CGI;
-#my $csv = Text::CSV->new ({binary => 1, eol => "\n"}) or die "Cannot use CSV";
+
 
 print "Content-type: text/html\n\n";
 
@@ -21,8 +20,6 @@ print "Passwords do not match";
 else{
 $new=join(',',$name,$username,$password);
 }
-#get the current members.csv into an array
-#open FH 'members.csv' or die $!;
 
 my $file = '../Members.csv';
 open(MEMBERS, "<$file") or die "Could not access member directory\n"; 
@@ -44,9 +41,6 @@ print ('Sorry that username is taken. Please choose another one. </br>
 <a href="../registration.html">Register</a>
 ');
 
-#print "That username is taken. Please choose another one.</br>
-#<a href="registration.html">Register</a></br>
-#<a href="home.html">Home</a>";
 }
 else{
 open(MEMBERS,'>>../members.csv') or die "oops";
