@@ -125,6 +125,19 @@ parseInput(char *uName, char *pwd, char *input) {
 
 }
 
+int verifyInput(aUser endUser, aUser *m) {
+
+	while (m != NULL) {
+		if (strcmp(endUser.userName,m->userName)){
+			if (strcmp(endUser.passWord,m->passWord)){
+				return 0;
+			} else return 1;
+		}
+		m = m->next;
+	}
+	return 1;
+}
+
 int main(void) {
 
 	printf("content-type: text/html\n\n");
@@ -152,14 +165,13 @@ int main(void) {
 
 		parseInput(endUser.userName, endUser.passWord, input);
 
-		printf("<h1>%s <br/> %s</h1>",endUser.userName,endUser.passWord);
+		int check = verifyInput(endUser,p);
+
+		if (check) {
+			printf("<h1>BUY A PUPPY</h1>");
+		} else {
+			printf("<h1>GO DIE</h1>");
+		}
+
 	}
-
-
-	// while (p != NULL) {
-	// 	aUser *m = p;
-	// 	printf("%s/%s/%s\n", p->fullName,p->userName,p->passWord);
-	// 	p = p->next;
-	// 	free(m);
-	// }		
 }
