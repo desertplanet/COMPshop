@@ -92,16 +92,17 @@ int main(void) {
 
 	aUser endUser;
 
+	char *input = (char *)malloc(100);
+
 	endUser.fullName = (char *)malloc(40);
 	endUser.userName = (char *)malloc(30);
 	endUser.passWord = (char *)malloc(30);
 
-	fgets(endUser.userName,40,stdin);
-	fgets(endUser.passWord,30,stdin);
+	fgets(input,100,stdin);
 
 	printf("content-type: text/html\n\n");
 
-	printf("<h1>%s<br/>%s</h1>",endUser.userName,endUser.passWord);
+	printf("<h1>%s</h1>",input);
 
 
 
