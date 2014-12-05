@@ -4,8 +4,32 @@ body {
 	
 }
 
-#input {
-	text-align: center;
-	padding-top: 20em;
+#loginform{
+	width:100%;
+	height:100%;
+	background-color:#93DFB8;
+	position:absolute;
 }
 
+input, input[type="password"],input[type="text"]{
+	height:3em;
+	width:20em;
+	padding:1em;
+	border:none;
+	margin-bottom:0.3em;
+
+}
+input[type="submit"]{
+	background-color:#B5D8EB;
+	color:black;
+	font-weight:300;
+}
+input:focus, input[type="password"]:focus,input[type="text"]:focus{
+	background-color:#FFEAF4;
+	outline:none;
+}
+	
+#login{
+	width:12em;
+	margin:5em auto;
+}
