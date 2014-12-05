@@ -129,12 +129,15 @@ int verifyInput(aUser endUser, aUser *m) {
 
 	while (m != NULL) {
 		if (strcmp(endUser.userName,m->userName)){
+			printf("uName match");
 			if (strcmp(endUser.passWord,m->passWord)){
+				printf("pwd match");
 				return 0;
 			} else return 1;
 		}
 		m = m->next;
 	}
+	printf("default");
 	return 1;
 }
 
