@@ -165,6 +165,8 @@ void loginSuccess(aUser endUser) {
 	FILE *loggedIn = fopen("data/LoggedIn.csv","a");
 	if (loggedIn != NULL) {
 		fprintf(loggedIn, "%s\n", endUser.userName);
+
+		
 		// FILE *catalogue = fopen("catalogue.html","rt");
 
 		// char line[100];

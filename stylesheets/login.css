@@ -34,4 +34,9 @@ input:focus, input[type="password"]:focus,input[type="text"]:focus{
 	margin:5em auto;
 }
 
-
+#error{
+	color:white;
+	width:30em;
+	margin:5em auto;
+	text-align: center;
+}
