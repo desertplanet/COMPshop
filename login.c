@@ -39,9 +39,14 @@ void populateVars(char *line, aUser *user) {
 		}
 }
 
-int main(void) {
+aUser *getMembersList(void) {
 
-	FILE *members = fopen("Members.csv","r");
+	FILE *members = fopen("Members.csv","rt");
+
+	if (members == NULL) {
+		printf("There was a problem loading the csv database.\n");
+		exit(1);
+	}
 
 	aUser *head = (aUser *)malloc(sizeof(aUser));
 
@@ -49,9 +54,9 @@ int main(void) {
 
 	aUser *currentUser = head;
 
-	currentUser->fullName = (char *)calloc(40,1);
-	currentUser->userName = (char *)calloc(30,1);
-	currentUser->passWord = (char *)calloc(30,1);
+	currentUser->fullName = (char *)malloc(40);
+	currentUser->userName = (char *)malloc(30);
+	currentUser->passWord = (char *)malloc(30);
 
 	char line[100];
 
@@ -64,23 +69,47 @@ int main(void) {
 			currentUser->next = (aUser *)malloc(sizeof(aUser));
 			currentUser = currentUser->next;
 
-			currentUser->fullName = (char *)calloc(40,1);
-			currentUser->userName = (char *)calloc(30,1);
-			currentUser->passWord = (char *)calloc(30,1);
+			currentUser->fullName = (char *)malloc(40);
+			currentUser->userName = (char *)malloc(30);
+			currentUser->passWord = (char *)malloc(30);
 
 			populateVars(line,currentUser);
 		}
-
-		aUser *p;
-		p = head;
-
-		while (p != NULL) {
-			aUser *m = p;
-			printf("%s/%s/%s\n", p->fullName,p->userName,p->passWord);
-			p = p->next;
-			free(m);
-		}	
 	} else {
-		printf("There are no registered members or there is a problem with the database.\n");
+		printf("There are no registered members.\n");
 	}
+
+	return head;
+}
+
+int verifyUser(char *uName, char *pwd) {
+
+}
+
+int main(void) {
+
+	aUser *p = getMembersList();
+
+	aUser endUser;
+
+	char *input = (char *)malloc(100);
+
+	endUser.fullName = (char *)malloc(40);
+	endUser.userName = (char *)malloc(30);
+	endUser.passWord = (char *)malloc(30);
+
+	fgets(input,100,stdin);
+
+	printf("content-type: text/html\n\n");
+
+	printf("<h1>%s</h1>",input);
+
+
+
+	// while (p != NULL) {
+	// 	aUser *m = p;
+	// 	printf("%s/%s/%s\n", p->fullName,p->userName,p->passWord);
+	// 	p = p->next;
+	// 	free(m);
+	// }		
 }
