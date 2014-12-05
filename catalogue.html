@@ -1,3 +1,6 @@
+<!doctype html>
+<html>
+<head>
 <title>catalogue</title>
 <style type="text/css"></style>
 </head>
@@ -7,19 +10,21 @@
 margin:0 auto;
 width:40%;">
 <h1>Catalogue</h1>
+<form name="submit" method="post" action="cgi-bin/Purchase.py">
 <table>
 	<tr>
-		<td><img src = "http://cdn.cutestpaw.com/wp-content/uploads/2011/11/A-FIST-FULL-OF-PUPPY-l.jpg" width="200" height="200"  /></td>
+		<td><img src = "http://cdn.cutestpaw.com/wp-content/uploads/2011/11/A-FIST-FULL-OF-PUPPY-l.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
 		<td>Number in stock: 4</td>
-		<td><form action = ""><input name = "check" type = "checkbox"></form></td>
-		<td><form action = ""><input name = "num" type = "text" value = "Enter number to request"></form></td>
+	</tr>
+	<tr>
+		<td><input name = "check" type = "checkbox" value = "true"></input></td>
+		<td><input name = "num" type = "text" value = "Enter number to request"></input></td>
 	</tr>
 </table>
-<form name="submit" method="post" action="cgi-bin/Purchase.py">
-<input name="submit" type="submit" value="buy me">
-<input name = "username" type = "hidden" value = "">
+<input name="submit" type="submit" value="buy me"></input>
+<input name = "username" type = "hidden" value = ""></input>
 </form>
 </body>
 </html>
