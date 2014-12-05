@@ -146,20 +146,22 @@ void loginSuccess(aUser endUser) {
 
 		char line[100];
 
+		int i = 0;
+
 		fgets(line,100,catalogue);
 
-		while (line != "<form name=\"submit\" method=\"post\" action=\"cgi-bin/Purchase.py\">\0"){
-			printf("%s\n",line);
+		while(i < 13){
+			printf("%s",line);
 			fgets(line,100,catalogue);
+			i++;
 		}
 
 		printf("<input name = \"username\" type = \"hidden\" value = \"%s\"></input>\n", endUser.userName);
 
 		fgets(line,100,catalogue); //SKIP THE TAG WE JUST OVERWROTE
-		fgets(line,100,catalogue);
 
-		while (line != NULL) {
-			printf("%s\n", line);
+		while (feof(catalogue) == 0) {
+			printf("%s", line);
 			fgets(line,100,catalogue);
 		}
 
