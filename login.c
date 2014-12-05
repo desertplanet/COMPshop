@@ -128,9 +128,9 @@ parseInput(char *uName, char *pwd, char *input) {
 int verifyInput(aUser endUser, aUser *m) {
 
 	while (m != NULL) {
-		if (strcmp(endUser.userName,m->userName)){
+		if (strcmp(endUser.userName,m->userName == 0)){
 			printf("uName match");
-			if (strcmp(endUser.passWord,m->passWord)){
+			if (strcmp(endUser.passWord,m->passWord == 0)){
 				printf("pwd match");
 				return 0;
 			} else return 1;
@@ -170,7 +170,7 @@ int main(void) {
 
 		int check = verifyInput(endUser,p);
 
-		if (check) {
+		if (check == 0) {
 			printf("<h1>BUY A PUPPY</h1>");
 		} else {
 			printf("<h1>GO DIE</h1>");
