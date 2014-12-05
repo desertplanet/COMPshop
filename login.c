@@ -2,6 +2,11 @@
 #include <string.h>
 #include <stdio.h>
 
+#define MAX_LEN 100
+#define EXTRA 11
+//"uName=" + "pwd=" + "&"
+#define MAX_INPUT MAX_LEN+EXTRA+2
+//"/0" and line break
 typedef struct USER {
 	char *fullName;
 	char *userName;
@@ -82,28 +87,71 @@ aUser *getMembersList(void) {
 	return head;
 }
 
-int verifyUser(char *uName, char *pwd) {
+
+parseInput(char *uName, char *pwd, char *input) {
+
+	input += 6;
+
+	int j = 0;
+
+	while (*input != '&') {
+		if (*input == '%' || *input == '+') {
+			printf("Your Username must not contain illegal characters or spaces");
+			break;
+		}
+
+		*uName = *input;
+		input++;
+	}
+
+	input++;
+
+	while (*input != '\0') {
+		if (*input == '%') {
+			printf("Your password must be composed of letters, numbers and spaces");
+			break;
+		}
+
+		if (*input == '+'){
+			*pwd = ' ';
+		} else {
+			*pwd = *input;
+		}
+
+		input++;
+	}
 
 }
 
 int main(void) {
 
+	printf("content-type: text/html\n\n");
+
 	aUser *p = getMembersList();
 
 	aUser endUser;
-
-	char *input = (char *)malloc(100);
-
 	endUser.fullName = (char *)malloc(40);
 	endUser.userName = (char *)malloc(30);
 	endUser.passWord = (char *)malloc(30);
 
-	fgets(input,100,stdin);
+	char *input = (char *)malloc(100);
+	char *lengthstr;
+	long lengthnum;
 
-	printf("content-type: text/html\n\n");
+	lengthstr = getenv("CONTENT_LENGTH");
 
-	printf("<h1>%s</h1>",input);
+	if (lengthstr == NULL || sscanf(lengthstr,"%ld",&lengthnum)!=1 || lengthnum > MAX_LEN) {
 
+	  	printf("<strong>Input Error </strong>");
+
+	} else {
+
+		fgets(input,lengthnum+1,stdin);
+
+		parseInput(endUser.userName, endUser.passWord, input);
+
+		printf("<h1>%s <br/> %s</h1>",endUser.userName,endUser.passWord);
+	}
 
 
 	// while (p != NULL) {
