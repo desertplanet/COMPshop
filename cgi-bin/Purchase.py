@@ -6,6 +6,10 @@ import cgi
 import cgitb
 cgitb.enable()
 
+"""
+This method generates the error pages if the user is not logged in or the username
+is not on the list of logged in users.
+"""
 def generateError(): 
 	print "Content-Type: text/html;charset=utf-8"
 	print
@@ -28,6 +32,14 @@ def generateError():
 	</body>
 	</html>"""
 
+'''
+This method generates the bill of the current logged in user.
+@param username The current logged in user
+@param n The list with the name, amount, and unit price of every item ordered
+
+This generates an html page, prints a greeting to the user, generates the bill.
+The checkout link, home page, catalogue page are linked at the bottom.
+'''
 def generateBill(username, n):
 	print "Content-Type: text/html;charset=utf-8"
 	print
@@ -62,6 +74,10 @@ def generateBill(username, n):
 	</body>
 	</html>"""
 
+"""
+This method overwrites the inventory based on the list that contains the entire new inventory.
+@param lcpy The list that contains the name, new stock amount, and price of all items.
+"""
 def removeInventory(lcpy):
 	with open('../data/Inventory.csv', 'wt') as refile:
 		rewriter = csv.writer(refile, delimiter=',', quotechar=' ', quoting=csv.QUOTE_MINIMAL)
@@ -70,7 +86,11 @@ def removeInventory(lcpy):
 			ustock = lcpy.pop()
 			uprice = lcpy.pop()
 			rewriter.writerow([uname,ustock,uprice])
-
+"""
+This method gets the price of the item from the inventory
+@param pupname The name of the item
+@return Returns the price of the item
+"""
 def getPrice(pupname):
 	with open('../data/Inventory.csv', 'rt') as csfile:
 		freader = csv.reader(csfile, delimiter=',', quotechar=' ')
@@ -78,11 +98,25 @@ def getPrice(pupname):
 			if pupname == puppy[0]:
 				return int(puppy[2])
 
+
+"""
+Gets all inputs from the catalogue.html page
+Gets the hidden username from the page
+Creates two empty lists: one for the bill generation, one for updating inventory
+"""
 form = cgi.FieldStorage()
 liuser = form.getfirst("username")
 mygiantlist = []
 listcopy = []
 
+"""
+1. Goes through the inventory file
+2. If the item is checked off on the catalogue page
+	- Check if the number requested is less than the stock
+		- If the number is smaller, add the item, # requested, and unit price to both lists
+	- If the # requested is larger, add the item, max stock, and unit price to both lists
+3. If the item is not checked off, just add it to the list for inventory update
+"""
 with open('../data/Inventory.csv', 'rt') as cofile:
 	coreader = csv.reader(cofile, delimiter=',', quotechar=' ')
 	for p in coreader:
@@ -112,10 +146,19 @@ with open('../data/Inventory.csv', 'rt') as cofile:
 			listcopy.append(int(p[1]))
 			newprice = getPrice(str(p[0]))
 			listcopy.append(newprice)
-
+"""
+Since lists are LIFO in python, reversing the list makes it easier to deal with
+"""
 mygiantlist.reverse()
 listcopy.reverse()
 
+"""
+1. If the hidden field is not empty, user might be logged in
+	- If the username is in the loggedin file generate the bill and update inventory
+	- If the username is not in the loggedin file generate the error page
+2. If the hidden field is empty, user is not logged in
+	- Generate error page
+"""
 if liuser != "":
 	isLogged = False
 	with open('../data/LoggedIn.csv', 'rt') as logfile:
