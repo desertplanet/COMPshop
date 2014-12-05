@@ -46,7 +46,7 @@ void populateVars(char *line, aUser *user) {
 
 aUser *getMembersList(void) {
 
-	FILE *members = fopen("Members.csv","rt");
+	FILE *members = fopen("data/Members.csv","rt");
 
 	if (members == NULL) {
 		printf("There was a problem loading the csv database.\n");
@@ -97,19 +97,20 @@ parseInput(char *uName, char *pwd, char *input) {
 	while (*input != '&') {
 		if (*input == '%' || *input == '+') {
 			printf("Your Username must not contain illegal characters or spaces");
-			break;
+			exit(2);
 		}
 
 		*uName = *input;
 		input++;
+		uName++;
 	}
 
-	input++;
+	input += 5; //Jump ampersand and "pwd="
 
 	while (*input != '\0') {
 		if (*input == '%') {
 			printf("Your password must be composed of letters, numbers and spaces");
-			break;
+			exit(3);
 		}
 
 		if (*input == '+'){
@@ -119,6 +120,7 @@ parseInput(char *uName, char *pwd, char *input) {
 		}
 
 		input++;
+		pwd++;
 	}
 
 }
@@ -143,7 +145,7 @@ int main(void) {
 	if (lengthstr == NULL || sscanf(lengthstr,"%ld",&lengthnum)!=1 || lengthnum > MAX_LEN) {
 
 	  	printf("<strong>Input Error </strong>");
-
+		exit(5);
 	} else {
 
 		fgets(input,lengthnum+1,stdin);
