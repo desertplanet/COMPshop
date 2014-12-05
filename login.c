@@ -2,6 +2,11 @@
 #include <string.h>
 #include <stdio.h>
 
+#define MAX_LEN 100
+#define EXTRA 11
+//"uName=" + "pwd=" + "&"
+#define MAX_INPUT MAX_LEN+EXTRA+2
+//"/0" and line break
 typedef struct USER {
 	char *fullName;
 	char *userName;
@@ -41,7 +46,7 @@ void populateVars(char *line, aUser *user) {
 
 aUser *getMembersList(void) {
 
-	FILE *members = fopen("Members.csv","rt");
+	FILE *members = fopen("data/Members.csv","rt");
 
 	if (members == NULL) {
 		printf("There was a problem loading the csv database.\n");
@@ -82,34 +87,91 @@ aUser *getMembersList(void) {
 	return head;
 }
 
-int verifyUser(char *uName, char *pwd) {
 
+parseInput(char *uName, char *pwd, char *input) {
+
+	input += 6;
+
+	int j = 0;
+
+	while (*input != '&') {
+		if (*input == '%' || *input == '+') {
+			printf("Your Username must not contain illegal characters or spaces");
+			exit(2);
+		}
+
+		*uName = *input;
+		input++;
+		uName++;
+	}
+
+	input += 5; //Jump ampersand and "pwd="
+
+	while (*input != '\0') {
+		if (*input == '%') {
+			printf("Your password must be composed of letters, numbers and spaces");
+			exit(3);
+		}
+
+		if (*input == '+'){
+			*pwd = ' ';
+		} else {
+			*pwd = *input;
+		}
+
+		input++;
+		pwd++;
+	}
+
+}
+
+int verifyInput(aUser endUser, aUser *m) {
+
+	while (m != NULL) {
+		if (strcmp(endUser.userName,m->userName) == 0) {
+			if (strcmp(endUser.passWord,m->passWord) == 0){
+				return 0;
+			} else return 1;
+		}
+		m = m->next;
+	}
+	return 1;
 }
 
 int main(void) {
 
+	printf("content-type: text/html\n\n");
+
 	aUser *p = getMembersList();
 
 	aUser endUser;
-
-	char *input = (char *)malloc(100);
-
 	endUser.fullName = (char *)malloc(40);
 	endUser.userName = (char *)malloc(30);
 	endUser.passWord = (char *)malloc(30);
 
-	fgets(input,100,stdin);
+	char *input = (char *)malloc(100);
+	char *lengthstr;
+	long lengthnum;
 
-	printf("content-type: text/html\n\n");
+	lengthstr = getenv("CONTENT_LENGTH");
 
-	printf("<h1>%s</h1>",input);
+	if (lengthstr == NULL || sscanf(lengthstr,"%ld",&lengthnum)!=1 || lengthnum > MAX_LEN) {
 
+	  	printf("<strong>Input Error </strong>");
+		exit(5);
+	} else {
 
+		fgets(input,lengthnum+1,stdin);
 
-	// while (p != NULL) {
-	// 	aUser *m = p;
-	// 	printf("%s/%s/%s\n", p->fullName,p->userName,p->passWord);
-	// 	p = p->next;
-	// 	free(m);
-	// }		
+		parseInput(endUser.userName, endUser.passWord, input);
+
+		int check = verifyInput(endUser,p);
+
+		if (check == 0) {
+			printf("<h1>BUY A PUPPY</h1>");
+		} else {
+			printf("<h1>GO DIE</h1>");
+		}
+
+	}
 }
