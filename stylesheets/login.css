@@ -34,4 +34,21 @@ input:focus, input[type="password"]:focus,input[type="text"]:focus{
 	margin:5em auto;
 }
 
+#error{
+	color:white;
+	width:50em;
+	margin:5em auto;
+	text-align: center;
+}
 
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited {
+	color: #09b0de;
+}
+
+a:hover {
+	color: #fe8a77;
+}

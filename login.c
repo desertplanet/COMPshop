@@ -165,28 +165,36 @@ void loginSuccess(aUser endUser) {
 	FILE *loggedIn = fopen("data/LoggedIn.csv","a");
 	if (loggedIn != NULL) {
 		fprintf(loggedIn, "%s\n", endUser.userName);
-		FILE *catalogue = fopen("catalogue.html","rt");
 
-		char line[100];
+		
+		// FILE *catalogue = fopen("catalogue.html","rt");
 
-		int i = 0;
+		// char line[100];
 
-		fgets(line,100,catalogue);
+		// int i = 0;
 
-		while(i < 13){
-			printf("%s",line);
-			fgets(line,100,catalogue);
-			i++;
-		}
+		// fgets(line,100,catalogue);
 
-		printf("<input name = \"username\" type = \"hidden\" value = \"%s\"></input>\n", endUser.userName);
+		// while(i < 13){
+		// 	printf("%s",line);
+		// 	fgets(line,100,catalogue);
+		// 	i++;
+		// }
 
-		fgets(line,100,catalogue); //SKIP THE TAG WE JUST OVERWROTE
+		// printf("<input name = \"username\" type = \"hidden\" value = \"%s\"></input>\n", endUser.userName);
 
-		while (feof(catalogue) == 0) {
-			printf("%s", line);
-			fgets(line,100,catalogue);
-		}
+		// fgets(line,100,catalogue); //SKIP THE TAG WE JUST OVERWROTE
+
+		// while (feof(catalogue) == 0) {
+		// 	printf("%s", line);
+		// 	fgets(line,100,catalogue);
+		// }
+
+		char sysCmd[100];
+
+		sprintf(sysCmd,"python cgi-bin/createCatalogue.py %s", endUser.userName);
+
+		system(sysCmd);
 
 	} else {
 		printf("Traffic Database error");
