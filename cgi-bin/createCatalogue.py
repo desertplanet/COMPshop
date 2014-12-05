@@ -13,6 +13,11 @@ def getAllInv():
 			crelist.append(epup[0])
 	return crelist
 
+def getStock(pupname):
+	return
+
+def getDescription(name):
+	return
 
 def getFour(fpos, tpos, thpos, fopos):
 	fime = """
@@ -108,7 +113,7 @@ def getOne(fpos):
 	</tr>"""
 	return fime
 	
-def genCat(ulist):
+def genCat(ulist, slist):
 	f = open('catalogue.html','w')
 
 	message = """<!doctype html>
