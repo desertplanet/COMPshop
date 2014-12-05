@@ -43,28 +43,23 @@ def generateBill(username, n):
 	margin:0 auto;
 	width:40%;">
 	<body>"""
-	mylist = ["retriever", "labrador", "pug", "pitbull"]
-	total = 0
 	print """<h3>Hello, """ + str(username) + """.  Please verify your bill below.</h3>"""	
 	print """<table>"""
 	print """<thead> <td>Puppies ordered</td> <td>Number ordered</td> <td>Unit Rental Price</td></thead>"""	
-	with open('../data/Inventory.csv', 'rt') as csvfile:
-		spamreader = csv.reader(csvfile, delimiter=',', quotechar=' ')
-		for row in spamreader:
-			print """<tr><td>""" + str(mylist[0]) + """</td><td>x""" + str(n) + """</td><td>$""" + str(row[2]) + """</td></tr>"""
-			total = total + int(n)*int(row[2])
+	total = 0
+	while len(n) > 0:
+		pname = n.pop()
+		pnum = n.pop()
+		punit = n.pop()
+		print """<tr><td>""" + str(pname) + """</td><td>x""" + str(pnum) + """</td><td>$""" + str(punit) + """</td></tr>"""
+		total = total + int(pnum)*int(punit)
 	print """<tr><td>	</td><td>Total</td><td>$""" + str(total) + """</td></tr>"""
 	print """</table>
 	</body>
 	</html>"""
 
-def getStock(pup, numpups):
-	with open('../data/Inventory.csv', 'rt') as cfile:
-		sreader = csv.reader(cfile, delimiter=',', quotechar=' ')
-		for m in sreader:
-			if pup == m[0]:
-				if numpups < m[1]:
-					return True
+def removeInventory(lcpy):
+	return
 
 def getPrice(pupname):
 	with open('../data/Inventory.csv', 'rt') as csfile:
@@ -76,8 +71,6 @@ def getPrice(pupname):
 form = cgi.FieldStorage()
 liuser = form.getfirst("username")
 mygiantlist = []
-print "Content-Type: text/html;charset=utf-8"
-print
 
 with open('../data/Inventory.csv', 'rt') as cofile:
 	coreader = csv.reader(cofile, delimiter=',', quotechar=' ')
@@ -91,7 +84,14 @@ with open('../data/Inventory.csv', 'rt') as cofile:
 				mygiantlist.append(numtoget)
 				price = getPrice(str(p[0]))
 				mygiantlist.append(price)
-		print mygiantlist
+			else:
+				mygiantlist.append(str(p[0]))
+				mygiantlist.append(p[1])
+				price = getPrice(str(p[0]))
+				mygiantlist.append(price)
+
+mygiantlist.reverse()
+listcopy = mygiantlist
 
 if liuser != "":
 	isLogged = False
@@ -101,7 +101,8 @@ if liuser != "":
 			if liuser == logged[0]:
 				isLogged = True
 	if isLogged:
-		generateBill(liuser, len(mygiantlist))
+		generateBill(liuser, mygiantlist)
+		removeInventory(listcopy)
 	else:
 		generateError()
 else:
