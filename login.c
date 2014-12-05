@@ -170,11 +170,12 @@ void loginSuccess(aUser endUser) {
 }
 
 void loginFailure(void){
+	
 	FILE *error = fopen("pwderror.html","rt");
 
 	char line[80];
 
-	while (*(fgets(line,80,error)) != EOF) {
+	while (fgets(line,80,error) != NULL) {
 		printf("%s\n",line);
 	}
 }
