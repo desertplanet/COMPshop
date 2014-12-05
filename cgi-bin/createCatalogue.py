@@ -13,6 +13,12 @@ def getAllInv():
 			crelist.append(epup[0])
 	return crelist
 
+def getStock(pupname):
+	with open('data/Inventory.csv', 'rt') as cfile:
+		creader = csv.reader(cfile, delimiter=',', quotechar=' ')
+		for epup in creader:
+			if str(epup[0]) == pupname:
+				return str(epup[1])
 
 def getFour(fpos, tpos, thpos, fopos):
 	fime = """
@@ -29,10 +35,10 @@ def getFour(fpos, tpos, thpos, fopos):
 		<td>""" + str(fopos) + """</td>
 	</tr>
 	<tr>
-		<td>""" + str(fpos) + """</td>
-		<td>""" + str(tpos) + """</td>
-		<td>""" + str(thpos) + """</td>
-		<td>""" + str(fopos) + """</td>
+		<td>Number in stock:  """ + getStock(fpos) + """</td>
+		<td>Number in stock:  """ + getStock(tpos) + """</td>
+		<td>Number in stock:  """ + getStock(thpos) + """</td>
+		<td>Number in stock:  """ + getStock(fopos) + """</td>
 	</tr>
 	<tr>
 		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
@@ -130,7 +136,6 @@ def genCat(ulist):
 	f.write(message)
 
 	while len(ulist) > 0:
-		print len(ulist)
 		if len(ulist) >= 4:
 			message = getFour(ulist.pop(), ulist.pop(), ulist.pop(), ulist.pop())
 		elif len(ulist) == 3:
