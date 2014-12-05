@@ -57,28 +57,28 @@ aUser *getMembersList(void) {
 
 	head->next = NULL;
 
-	aUser *currentUser = head;
+	aUser *t = head;
 
-	currentUser->fullName = (char *)malloc(40);
-	currentUser->userName = (char *)malloc(30);
-	currentUser->passWord = (char *)malloc(30);
+	t->fullName = (char *)malloc(40);
+	t->userName = (char *)malloc(30);
+	t->passWord = (char *)malloc(30);
 
 	char line[100];
 
 	if (fgets(line,100,members) != NULL) {
 
-		populateVars(line,currentUser);
+		populateVars(line,t);
 
 		while (fgets(line,100,members) != NULL) {
 
-			currentUser->next = (aUser *)malloc(sizeof(aUser));
-			currentUser = currentUser->next;
+			t->next = (aUser *)malloc(sizeof(aUser));
+			t = t->next;
 
-			currentUser->fullName = (char *)malloc(40);
-			currentUser->userName = (char *)malloc(30);
-			currentUser->passWord = (char *)malloc(30);
+			t->fullName = (char *)malloc(40);
+			t->userName = (char *)malloc(30);
+			t->passWord = (char *)malloc(30);
 
-			populateVars(line,currentUser);
+			populateVars(line,t);
 		}
 	} else {
 		printf("There are no registered members.\n");
