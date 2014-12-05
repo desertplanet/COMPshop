@@ -29,6 +29,12 @@ def getFour(fpos, tpos, thpos, fopos):
 		<td>""" + str(fopos) + """</td>
 	</tr>
 	<tr>
+		<td>""" + str(fpos) + """</td>
+		<td>""" + str(tpos) + """</td>
+		<td>""" + str(thpos) + """</td>
+		<td>""" + str(fopos) + """</td>
+	</tr>
+	<tr>
 		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
 		<td><input name = \"""" + str(tpos) + """\" type = "checkbox" value = "true"></input></td>
 		<td><input name = \"""" + str(thpos) + """\" type = "checkbox" value = "true"></input></td>
@@ -152,6 +158,7 @@ print "Content-Type: text/html;charset=utf-8"
 print
 
 thislist = getAllInv()
+thislist.reverse()
 genCat(thislist)
 
 print "I worked"
