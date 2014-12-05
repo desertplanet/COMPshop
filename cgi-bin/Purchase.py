@@ -58,12 +58,13 @@ def generateBill(username, n):
 	</body>
 	</html>"""
 
-def getStock(pup):
+def getStock(pup, numpups):
 	with open('../data/Inventory.csv', 'rt') as cfile:
 		sreader = csv.reader(cfile, delimiter=',', quotechar=' ')
 		for m in sreader:
 			if pup == m[0]:
-				return int(m[1])
+				if numpups < m[1]:
+					return True
 
 def getPrice(pupname):
 	with open('../data/Inventory.csv', 'rt') as csfile:
@@ -73,9 +74,24 @@ def getPrice(pupname):
 				return int(puppy[2])
 
 form = cgi.FieldStorage()
-
 liuser = form.getfirst("username")
-ofeach = form.getfirst("Dalmation")
+mygiantlist = []
+print "Content-Type: text/html;charset=utf-8"
+print
+
+with open('../data/Inventory.csv', 'rt') as cofile:
+	coreader = csv.reader(cofile, delimiter=',', quotechar=' ')
+	for p in coreader:
+		checkme = form.getfirst(str(p[0]))
+		if checkme == "true":
+			pupnum = str(p[0]) + 'num'
+			numtoget = form.getfirst(pupnum)
+			if int(p[1]) >= int(numtoget):
+				mygiantlist.append(str(p[0]))
+				mygiantlist.append(numtoget)
+				price = getPrice(str(p[0]))
+				mygiantlist.append(price)
+		print mygiantlist
 
 if liuser != "":
 	isLogged = False
@@ -85,7 +101,7 @@ if liuser != "":
 			if liuser == logged[0]:
 				isLogged = True
 	if isLogged:
-		generateBill(liuser, ofeach)
+		generateBill(liuser, len(mygiantlist))
 	else:
 		generateError()
 else:
