@@ -59,7 +59,13 @@ def generateBill(username, n):
 	</html>"""
 
 def removeInventory(lcpy):
-	return
+	with open('../data/Inventory.csv', 'wt') as refile:
+		rewriter = csv.writer(refile, delimiter=',', quotechar=' ', quoting=csv.QUOTE_MINIMAL)
+		while len(lcpy) > 0:
+			uname = lcpy.pop()
+			ustock = lcpy.pop()
+			uprice = lcpy.pop()
+			rewriter.writerow([uname,ustock,uprice])
 
 def getPrice(pupname):
 	with open('../data/Inventory.csv', 'rt') as csfile:
@@ -71,6 +77,7 @@ def getPrice(pupname):
 form = cgi.FieldStorage()
 liuser = form.getfirst("username")
 mygiantlist = []
+listcopy = []
 
 with open('../data/Inventory.csv', 'rt') as cofile:
 	coreader = csv.reader(cofile, delimiter=',', quotechar=' ')
@@ -84,14 +91,26 @@ with open('../data/Inventory.csv', 'rt') as cofile:
 				mygiantlist.append(numtoget)
 				price = getPrice(str(p[0]))
 				mygiantlist.append(price)
+				listcopy.append(str(p[0]))
+				newstock = int(p[1]) - int(numtoget)
+				listcopy.append(newstock)
+				listcopy.append(price)
 			else:
 				mygiantlist.append(str(p[0]))
 				mygiantlist.append(p[1])
 				price = getPrice(str(p[0]))
 				mygiantlist.append(price)
+				listcopy.append(str(p[0]))
+				listcopy.append(0)
+				listcopy.append(price)
+		else:
+			listcopy.append(str(p[0]))
+			listcopy.append(int(p[1]))
+			newprice = getPrice(str(p[0]))
+			listcopy.append(newprice)
 
 mygiantlist.reverse()
-listcopy = mygiantlist
+listcopy.reverse()
 
 if liuser != "":
 	isLogged = False
