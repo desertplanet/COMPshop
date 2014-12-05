@@ -23,7 +23,7 @@ def generateError():
 	width:40%;">
 	<body>
 	<p>Since you are not logged in, your order could not be processed.</p>
-	<p>Please log in by clicking <a href = ../login.html>here</a>.</p>
+	<p>Please log in by clicking <a href = ../pages/login.html>here</a>.</p>
 	</body>
 	</html>"""
 
