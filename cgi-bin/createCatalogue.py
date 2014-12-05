@@ -5,20 +5,105 @@ import sys
 import csv
 
 
-def genImageRow(imglst):
-	return
+def getAllInv():
+	with open('data/Inventory.csv', 'rt') as cfile:
+		creader = csv.reader(cfile, delimiter=',', quotechar=' ')
+		crelist = []
+		for epup in creader:
+			crelist.append(epup[0])
+	return crelist
 
-def genDescripRow(deslst):
-	return
 
-def genCheckRow(checklst):
-	return
+def getFour(fpos, tpos, thpos, fopos):
+	fime = """
+	<tr>
+		<td><img src = "images/""" + str(fpos) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "images/""" + str(tpos) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "images/""" + str(thpos) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "images/""" + str(fopos) + """.jpg" width="200" height="200"> </img></td>
+	</tr>
+	<tr>
+		<td>""" + str(fpos) + """</td>
+		<td>""" + str(tpos) + """</td>
+		<td>""" + str(thpos) + """</td>
+		<td>""" + str(fopos) + """</td>
+	</tr>
+	<tr>
+		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
+		<td><input name = \"""" + str(tpos) + """\" type = "checkbox" value = "true"></input></td>
+		<td><input name = \"""" + str(thpos) + """\" type = "checkbox" value = "true"></input></td>
+		<td><input name = \"""" + str(fopos) + """\" type = "checkbox" value = "true"></input></td>
+	</tr>
+	<tr>
+		<td><input name = \"""" + str(fpos) + """num" type = "text" value = "0"></input></td>
+		<td><input name = \"""" + str(tpos) + """num" type = "text" value = "0"></input></td>
+		<td><input name = \"""" + str(thpos) + """num" type = "text" value = "0"></input></td>
+		<td><input name = \"""" + str(fopos) + """num" type = "text" value = "0"></input></td>
+	</tr>"""
+	return fime
 
-def genFieldRow(fieldlst):
-	return
+def getThree(fpos, tpos, thpos):
+	fime = """
+	<tr>
+		<td><img src = "images/""" + str(fpos) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "images/""" + str(tpos) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "images/""" + str(thpos) + """.jpg" width="200" height="200"> </img></td>
+	</tr>
+	<tr>
+		<td>""" + str(fpos) + """</td>
+		<td>""" + str(tpos) + """</td>
+		<td>""" + str(thpos) + """</td>
+	</tr>
+	<tr>
+		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
+		<td><input name = \"""" + str(tpos) + """\" type = "checkbox" value = "true"></input></td>
+		<td><input name = \"""" + str(thpos) + """\" type = "checkbox" value = "true"></input></td>
+	</tr>
+	<tr>
+		<td><input name = \"""" + str(fpos) + """num" type = "text" value = "0"></input></td>
+		<td><input name = \"""" + str(tpos) + """num" type = "text" value = "0"></input></td>
+		<td><input name = \"""" + str(thpos) + """num" type = "text" value = "0"></input></td>
+	</tr>"""
+	return fime
 
-def genCat():
-	f = open('helloworld.html','w')
+def getTwo(fpos, tpos):
+	fime = """
+	<tr>
+		<td><img src = "images/""" + str(fpos) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "images/""" + str(tpos) + """.jpg" width="200" height="200"> </img></td>
+	</tr>
+	<tr>
+		<td>""" + str(fpos) + """</td>
+		<td>""" + str(tpos) + """</td>
+	</tr>
+	<tr>
+		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
+		<td><input name = \"""" + str(tpos) + """\" type = "checkbox" value = "true"></input></td>
+	</tr>
+	<tr>
+		<td><input name = \"""" + str(fpos) + """num" type = "text" value = "0"></input></td>
+		<td><input name = \"""" + str(tpos) + """num" type = "text" value = "0"></input></td>
+	</tr>"""
+	return fime
+
+def getOne(fpos):
+	fime = """
+	<tr>
+		<td><img src = "images/""" + str(fpos) + """.jpg" width="200" height="200"> </img></td>
+	</tr>
+	<tr>
+		<td>""" + str(fpos) + """</td>
+	</tr>
+	<tr>
+		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
+	</tr>
+	<tr>
+		<td><input name = \"""" + str(fpos) + """num" type = "text" value = "0"></input></td>
+	</tr>"""
+	return fime
+	
+def genCat(ulist):
+	f = open('catalogue.html','w')
 
 	message = """<!doctype html>
 	<html>
@@ -32,78 +117,37 @@ def genCat():
 	margin:0 auto;
 	width:40%;">
 	<h1>Catalogue</h1>
-	<form name="submit" method="post" action="cgi-bin/Purchase.py">"""
+	<form name="submit" method="post" action="cgi-bin/Purchase.py">
+	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
+	<table>"""
+
+	f.write(message)
+
+	while len(ulist) > 0:
+		print len(ulist)
+		if len(ulist) >= 4:
+			message = getFour(ulist.pop(), ulist.pop(), ulist.pop(), ulist.pop())
+		elif len(ulist) == 3:
+			message = getThree(ulist.pop(), ulist.pop(), ulist.pop())
+		elif len(ulist) == 2:
+			message = getTwo(ulist.pop(), ulist.pop())
+		else:
+			message = getOne(ulist.pop())
+			
+		f.write(message)
+
+	message = """
+	</table>
+	<input name="submit" type="submit" value="buy me"></input>
+	</form>
+	</body>
+	</html>"""
 
 	f.write(message)
 	f.close()
 
-	g = open('helloworld.html', 'a')
-
-	message = '''<input name = "username" type = "hidden" value ="''' + str(sys.argv[1]) + '''"></input>'''
-	g.write(message)
-	
-	message = """<table>"""
-	g.write(message)
-
-	with open('../data/Inventory.csv', 'wt') as cfile:
-		creader = csv.reader(cfile, delimiter=',', quotechar=' ')
-		count = 0
-		crelist = []
-		for epup in creader:
-			if count < 4:
-				crelist.append(epup[0])
-				count = count + 1
-			else:
-				crelist.reverse()
-				fpos = crelist.pop()
-				tpos = crelist.pop()
-				thpos= crelist.pop()
-				fopos = crelist.pop()
-				message = '''
-				<tr>
-					<td><img src = "images/''' + str(fpos) + '''.jpg" width="200" height="200"> </img></td>
-					<td><img src = "images/''' + str(tpos) + '''.jpg" width="200" height="200"> </img></td>
-					<td><img src = "images/''' + str(thpos) + '''.jpg" width="200" height="200"> </img></td>
-					<td><img src = "images/''' + str(fopos) + '''.jpg" width="200" height="200"> </img></td>
-				</tr>
-				<tr>
-					<td>''' + str(fpos) + '''</td>
-					<td>''' + str(tpos) + '''</td>
-					<td>''' + str(thpos) + '''</td>
-					<td>''' + str(fopos) + '''</td>
-				</tr>
-				<tr>
-					<td><input name = "''' + str(fpos) + '''" type = "checkbox" value = "true"></input></td>
-					<td><input name = "''' + str(tpos) + '''" type = "checkbox" value = "true"></input></td>
-					<td><input name = "''' + str(thpos) + '''" type = "checkbox" value = "true"></input></td>
-					<td><input name = "''' + str(fopos) + '''" type = "checkbox" value = "true"></input></td>
-				</tr>
-				<tr>
-					<td><input name = "''' + str(fpos) + '''num" type = "text" value = "0"></input></td>
-					<td><input name = "''' + str(tpos) + '''num" type = "text" value = "0"></input></td>
-					<td><input name = "''' + str(thpos) + '''num" type = "text" value = "0"></input></td>
-					<td><input name = "''' + str(fopos) + '''num" type = "text" value = "0"></input></td>
-				</tr>'''
-				g.write(message)
-				count = 0
-	message = '''</table>
-	<input name="submit" type="submit" value="buy me"></input>
-	</form>
-	</body>
-	</html>'''
-
-	g.write(message)
-	g.close()
-
-
-
-print "Content-Type: text/html;charset=utf-8"
-print
-print "hi"
-
-
-
-
+thislist = getAllInv()
+genCat(thislist)
 
 
 
