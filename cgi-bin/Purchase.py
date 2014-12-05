@@ -47,11 +47,11 @@ def generateBill(username, n):
 	total = 0
 	print """<h3>Hello, """ + str(username) + """.  Please verify your bill below.</h3>"""	
 	print """<table>"""
-	print """<thead>""" + getStock(mylist[0]) + """</thead>"""	
+	print """<thead> <td>Puppies ordered</td> <td>Number ordered</td> <td>Unit Rental Price</td></thead>"""	
 	with open('../data/Inventory.csv', 'rt') as csvfile:
 		spamreader = csv.reader(csvfile, delimiter=',', quotechar=' ')
 		for row in spamreader:
-			print """<tr><td>""" + mylist[0] + """</td><td>x""" + n + """</td><td>$""" + str(row[2]) + """</td></tr>"""
+			print """<tr><td>""" + str(mylist[0]) + """</td><td>x""" + str(n) + """</td><td>$""" + str(row[2]) + """</td></tr>"""
 			total = total + int(n)*int(row[2])
 	print """<tr><td>	</td><td>Total</td><td>$""" + str(total) + """</td></tr>"""
 	print """</table>
@@ -62,34 +62,35 @@ def getStock(pup):
 	with open('../data/Inventory.csv', 'rt') as cfile:
 		sreader = csv.reader(cfile, delimiter=',', quotechar=' ')
 		for m in sreader:
-			return m[1]
+			if pup == m[0]:
+				return int(m[1])
 
-def getPrice(pup):
+def getPrice(pupname):
 	with open('../data/Inventory.csv', 'rt') as csfile:
 		freader = csv.reader(csfile, delimiter=',', quotechar=' ')
 		for puppy in freader:
-			return puppy[2]
+			if pupname == puppy[0]:
+				return int(puppy[2])
 
 form = cgi.FieldStorage()
 
 liuser = form.getfirst("username")
-ofeach = form.getfirst("num")
-ulength = len(liuser)
+ofeach = form.getfirst("Dalmation")
 
-if int(ulength) = 0:
-	generateBill(liuser, ofeach)
+if liuser != "":
+	isLogged = False
+	with open('../data/LoggedIn.csv', 'rt') as logfile:
+		logreader = csv.reader(logfile, delimiter=',', quotechar=' ')
+		for logged in logreader:
+			if liuser == logged[0]:
+				isLogged = True
+	if isLogged:
+		generateBill(liuser, ofeach)
+	else:
+		generateError()
 else:
 	generateError()
 
-
-
-
-"""with open('../Members.csv', 'rt') as csvfile:
-	spamreader = csv.reader(csvfile, delimiter=',', quotechar=' ')
-	print "Content-Type: text/plain;charset=utf-8"
-	print	
-	for row in spamreader:
-		print row[0])"""
 
 
 
