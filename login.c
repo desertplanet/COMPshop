@@ -128,16 +128,13 @@ parseInput(char *uName, char *pwd, char *input) {
 int verifyInput(aUser endUser, aUser *m) {
 
 	while (m != NULL) {
-		if (strcmp(endUser.userName,m->userName == 0)){
-			printf("uName match");
-			if (strcmp(endUser.passWord,m->passWord == 0)){
-				printf("pwd match");
+		if (strcmp(endUser.userName,m->userName) == 0) {
+			if (strcmp(endUser.passWord,m->passWord) == 0){
 				return 0;
 			} else return 1;
 		}
 		m = m->next;
 	}
-	printf("default");
 	return 1;
 }
 
