@@ -4,9 +4,9 @@
 
 #define MAX_LEN 100
 #define EXTRA 11
-//"uName=" + "pwd=" + "&"
+// "uName=" + "pwd=" + "&"
 #define MAX_INPUT MAX_LEN+EXTRA+2
-//"/0" and line break
+// "/0" and line break
 typedef struct USER {
 	char *fullName;
 	char *userName;
@@ -138,6 +138,19 @@ int verifyInput(aUser endUser, aUser *m) {
 	return 1;
 }
 
+void loginSuccess(aUser endUser) {
+	FILE *loggedIn = fopen("data/LoggedIn.csv","a");
+	if (loggedIn != NULL) {
+		fprintf(loggedIn, "%s\n", endUser.userName);
+	} else {
+		printf("Traffic Database error");
+		exit(6);
+	}
+}
+
+void loginFailure(void){
+}
+
 int main(void) {
 
 	printf("content-type: text/html\n\n");
@@ -145,7 +158,6 @@ int main(void) {
 	aUser *p = getMembersList();
 
 	aUser endUser;
-	endUser.fullName = (char *)malloc(40);
 	endUser.userName = (char *)malloc(30);
 	endUser.passWord = (char *)malloc(30);
 
@@ -165,12 +177,10 @@ int main(void) {
 
 		parseInput(endUser.userName, endUser.passWord, input);
 
-		int check = verifyInput(endUser,p);
-
-		if (check == 0) {
-			printf("<h1>BUY A PUPPY</h1>");
+		if (verifyInput(endUser,p) == 0) {
+			loginSuccess(endUser);
 		} else {
-			printf("<h1>GO DIE</h1>");
+			loginFailure();
 		}
 
 	}
