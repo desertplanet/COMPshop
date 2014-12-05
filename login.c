@@ -95,10 +95,10 @@ parseInput(char *uName, char *pwd, char *input) {
 	int j = 0;
 
 	while (*input != '&') {
-		if (*input == '%' || *input == '+') {
-			printf("Your Username must not contain illegal characters or spaces");
-			exit(2);
-		}
+		// if (*input == '%' || *input == '+') {
+		// 	printf("Your Username must not contain illegal characters or spaces");
+		// 	exit(2);
+		// }
 
 		*uName = *input;
 		input++;
@@ -108,10 +108,10 @@ parseInput(char *uName, char *pwd, char *input) {
 	input += 5; //Jump ampersand and "pwd="
 
 	while (*input != '\0') {
-		if (*input == '%') {
-			printf("Your password must be composed of letters, numbers and spaces");
-			exit(3);
-		}
+		// if (*input == '%') {
+		// 	printf("Your password must be composed of letters, numbers and spaces");
+		// 	exit(3);
+		// }
 
 		if (*input == '+'){
 			*pwd = ' ';
@@ -142,6 +142,27 @@ void loginSuccess(aUser endUser) {
 	FILE *loggedIn = fopen("data/LoggedIn.csv","a");
 	if (loggedIn != NULL) {
 		fprintf(loggedIn, "%s\n", endUser.userName);
+		FILE *catalogue = fopen("catalogue.html","rt");
+
+		char line[100];
+
+		fgets(line,100,catalogue);
+
+		while (line != "<form name=\"submit\" method=\"post\" action=\"cgi-bin/Purchase.py\">\0"){
+			printf("%s\n",line);
+			fgets(line,100,catalogue);
+		}
+
+		printf("<input name = \"username\" type = \"hidden\" value = \"%s\"></input>\n", endUser.userName);
+
+		fgets(line,100,catalogue); //SKIP THE TAG WE JUST OVERWROTE
+		fgets(line,100,catalogue);
+
+		while (line != NULL) {
+			printf("%s\n", line);
+			fgets(line,100,catalogue);
+		}
+
 	} else {
 		printf("Traffic Database error");
 		exit(6);
