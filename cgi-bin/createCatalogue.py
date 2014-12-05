@@ -146,9 +146,15 @@ def genCat(ulist):
 	f.write(message)
 	f.close()
 
+
+
+print "Content-Type: text/html;charset=utf-8"
+print
+
 thislist = getAllInv()
 genCat(thislist)
 
+print "I worked"
 
 
 
