@@ -56,6 +56,9 @@ def generateBill(username, n):
 		total = total + int(pnum)*int(punit)
 	print """<tr><td>	</td><td>Total</td><td>$""" + str(total) + """</td></tr>"""
 	print """</table>
+	<h3><a href = ../thankyou.html>CHECKOUT</a></h3>
+	<p><a href = ../index.html>HOME</a></p>
+	<p><a href = ../catalogue.html>CATALOGUE</a></p>
 	</body>
 	</html>"""
 
