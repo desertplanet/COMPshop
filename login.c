@@ -166,35 +166,23 @@ void loginSuccess(aUser endUser) {
 	if (loggedIn != NULL) {
 		fprintf(loggedIn, "%s\n", endUser.userName);
 
-		
-		// FILE *catalogue = fopen("catalogue.html","rt");
-
-		// char line[100];
-
-		// int i = 0;
-
-		// fgets(line,100,catalogue);
-
-		// while(i < 13){
-		// 	printf("%s",line);
-		// 	fgets(line,100,catalogue);
-		// 	i++;
-		// }
-
-		// printf("<input name = \"username\" type = \"hidden\" value = \"%s\"></input>\n", endUser.userName);
-
-		// fgets(line,100,catalogue); //SKIP THE TAG WE JUST OVERWROTE
-
-		// while (feof(catalogue) == 0) {
-		// 	printf("%s", line);
-		// 	fgets(line,100,catalogue);
-		// }
-
 		char sysCmd[100];
 
 		sprintf(sysCmd,"python cgi-bin/createCatalogue.py %s", endUser.userName);
 
 		system(sysCmd);
+
+		
+		FILE *catalogue = fopen("catalogue.html","rt");
+
+		char line[100];
+
+		int i = 0;
+
+
+		while (fgets(line,100,catalogue) != NULL) {	
+			printf("%s", line);
+		}
 
 	} else {
 		printf("Traffic Database error");
