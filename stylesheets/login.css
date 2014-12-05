@@ -1,7 +1,12 @@
 body {
+	
 	font-family: helvetica,arial;
 	background-color: #93DFB8;
-	
+	text-align: center;
+	font-family:helvetica,arial;
+	font-weight:300;
+	text-transform:lowercase;
+	color:#dbfdeb;
 }
 
 #loginform{
@@ -9,6 +14,7 @@ body {
 	height:100%;
 	background-color:#93DFB8;
 	position:absolute;
+	padding-top: 5em;
 }
 
 input, input[type="password"],input[type="text"]{
@@ -31,18 +37,18 @@ input:focus, input[type="password"]:focus,input[type="text"]:focus{
 	
 #login{
 	width:12em;
-	margin:5em auto;
+	margin:0 auto;
 }
 
 #error{
 	color:white;
 	width:50em;
-	margin:5em auto;
-	text-align: center;
+	margin:0 auto;
 }
 
 a {
 	text-decoration: none;
+	font-size: 1.5em
 }
 
 a:link, a:visited {
@@ -52,3 +58,31 @@ a:link, a:visited {
 a:hover {
 	color: #fe8a77;
 }
+
+h1{
+	font-weight:300;
+	font-size:3em;
+	text-align:center;
+	color: #fe8a77;
+}
+
+h2{
+	font-weight: 500;
+}
+
+#home{
+	width:100%;
+	height:100%;
+/*	background-color:#60b087;*/
+	background-color:#fe8a77;
+	position:absolute;
+	margin:5em auto;
+}
+/*#navigation{
+	width:36em;
+	margin:5em auto;
+}
+#links{
+	width:10em;
+	margin:3em auto 1.5em auto;
+}*/
