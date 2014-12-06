@@ -47,15 +47,26 @@ a:hover.login{
 #links{
 	width:10em;
 	margin:3em auto 1.5em auto;
+		z-index: 5;
+
+}
+
+#Puppy{
+	position: absolute;
+	top: 170px;
+	left: 680px;
+	z-index: 1;
 }
 #bone{
-	width:36em;
-	height:10em;
+	width:100em;
+	height:100em;
 	background-image:url('../images/bone3.svg');
 	background-repeat:no-repeat;
 	background-position:center;
 	background-size:15em;
 }
+
+
 
 #login{
 	/*padding-top: 3em;*/
