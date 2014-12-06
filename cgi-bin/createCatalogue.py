@@ -194,6 +194,15 @@ def getOne(olist, fpos):
 	</tr>"""
 	return fime
 
+def getLogout()
+	if str(sys.argv[1]) == "":
+		return ""
+	else:
+		fime = """<form name="logout" method="post" action="b.cgi">
+		<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
+		<input type="submit" value="Log out"></input>
+		</form>"""
+		return fime
 
 '''
 This method generates the HTML to be rendered for the catalogue from the current inventory.
@@ -240,7 +249,7 @@ def genCat(ulist, dlist):
 	</form>
 	<form name="logout" method="post" action="b.cgi">
 	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
-	<input name="logout" type="submit" value="Log out"></input>
+	<input type="submit" value="Log out"></input>
 	</form>
 	</body>
 	</html>"""
