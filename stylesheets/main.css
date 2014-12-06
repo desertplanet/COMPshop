@@ -59,13 +59,13 @@ a:hover.login{
 
 #login{
 	/*padding-top: 3em;*/
-	margin-left: -0.7em;
+	/*marginleft: -0.7em;*/
 	margin-top: 3em;
 }
 
 input, input[type="password"],input[type="text"]{
 	height:3em;
-	width:20em;
+	width:15em;
 	padding:1em;
 	border:none;
 	margin-bottom:0.3em;

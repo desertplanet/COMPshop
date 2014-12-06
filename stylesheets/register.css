@@ -29,6 +29,7 @@ a:hover{
 	height:100%;
 	background-color:#93DFB8;
 	position:absolute;
+	padding-top: 3em;
 }
 #register{
 	width:12em;
@@ -36,7 +37,7 @@ a:hover{
 }
 input, input[type="password"],input[type="text"]{
 	height:3em;
-	width:20em;
+	width:15em;
 	padding:1em;
 	border:none;
 	margin-bottom:0.3em;
