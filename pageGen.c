@@ -3,8 +3,14 @@
 
 int main (int argc, char *argv[]) {
 
-	if (argc == 2) {
-		FILE *f = fopen(argv[1],"rt");
+	
+		char syscmd[50];
+
+		scanf(syscmd,"python %s %s", &argv[1], &argv[2]);
+		system(syscmd);
+
+	
+		FILE *f = fopen(argv[3],"rt");
 
 		char line[120];
 
@@ -13,11 +19,6 @@ int main (int argc, char *argv[]) {
 		while (fgets(line,120,f) != NULL) {
 			printf("%s", line);
 		}
-
-	} else {
-		printf("FILE ERROR\n");
-		return(1);
-	}
 
 	return(0);
 }
