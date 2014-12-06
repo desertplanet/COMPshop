@@ -75,7 +75,10 @@ def generateBill(username, n):
 	</form>
 	</h3>
 	<p><a href = ../index.html>HOME</a></p>
-	<p><a href = ../catalogue.html>CATALOGUE</a></p>
+	<form name="goback" method="post" action="../c.cgi">
+	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
+	<p>To return to the catalogue, click <input type = "submit" value = "here"></input>.</p>
+	</form>
 	</body>
 	</html>"""
 
