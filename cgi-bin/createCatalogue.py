@@ -13,6 +13,14 @@ def getAllInv():
 			crelist.append(epup[0])
 	return crelist
 
+def getDescripList():
+	with open('data/Descriptions.csv', 'rt') as cfile:
+		creader = csv.reader(cfile, delimiter=',', quotechar=' ')
+		crelist = []
+		for epup in creader:
+			crelist.append(epup[1])
+	return crelist
+
 def getStock(pupname):
 	with open('data/Inventory.csv', 'rt') as cfile:
 		creader = csv.reader(cfile, delimiter=',', quotechar=' ')
@@ -20,7 +28,11 @@ def getStock(pupname):
 			if str(epup[0]) == pupname:
 				return str(epup[1])
 
-def getFour(fpos, tpos, thpos, fopos):
+def getDescription(pupname, samename, descrip):
+	return descrip
+	
+
+def getFour(olist, fpos, tpos, thpos, fopos):
 	fime = """
 	<tr>
 		<td><img src = "images/""" + str(fpos) + """.jpg" width="200" height="200"> </img></td>
@@ -33,6 +45,12 @@ def getFour(fpos, tpos, thpos, fopos):
 		<td>""" + str(tpos) + """</td>
 		<td>""" + str(thpos) + """</td>
 		<td>""" + str(fopos) + """</td>
+	</tr>
+	<tr>
+		<td>""" + olist.pop() + """</td>
+		<td>""" + olist.pop() + """</td>
+		<td>""" + olist.pop() + """</td>
+		<td>""" + olist.pop() + """</td>
 	</tr>
 	<tr>
 		<td>Number in stock:  """ + getStock(fpos) + """</td>
@@ -54,7 +72,7 @@ def getFour(fpos, tpos, thpos, fopos):
 	</tr>"""
 	return fime
 
-def getThree(fpos, tpos, thpos):
+def getThree(olist, fpos, tpos, thpos):
 	fime = """
 	<tr>
 		<td><img src = "images/""" + str(fpos) + """.jpg" width="200" height="200"> </img></td>
@@ -65,6 +83,16 @@ def getThree(fpos, tpos, thpos):
 		<td>""" + str(fpos) + """</td>
 		<td>""" + str(tpos) + """</td>
 		<td>""" + str(thpos) + """</td>
+	</tr>
+	<tr>
+		<td>""" + olist.pop() + """</td>
+		<td>""" + olist.pop() + """</td>
+		<td>""" + olist.pop() + """</td>
+	</tr>
+	<tr>
+		<td>Number in stock:  """ + getStock(fpos) + """</td>
+		<td>Number in stock:  """ + getStock(tpos) + """</td>
+		<td>Number in stock:  """ + getStock(thpos) + """</td>
 	</tr>
 	<tr>
 		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
@@ -78,7 +106,7 @@ def getThree(fpos, tpos, thpos):
 	</tr>"""
 	return fime
 
-def getTwo(fpos, tpos):
+def getTwo(olist, fpos, tpos):
 	fime = """
 	<tr>
 		<td><img src = "images/""" + str(fpos) + """.jpg" width="200" height="200"> </img></td>
@@ -87,6 +115,14 @@ def getTwo(fpos, tpos):
 	<tr>
 		<td>""" + str(fpos) + """</td>
 		<td>""" + str(tpos) + """</td>
+	</tr>
+	<tr>
+		<td>""" + olist.pop() + """</td>
+		<td>""" + olist.pop() + """</td>
+	</tr>
+	<tr>
+		<td>Number in stock:  """ + getStock(fpos) + """</td>
+		<td>Number in stock:  """ + getStock(tpos) + """</td>
 	</tr>
 	<tr>
 		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
@@ -98,13 +134,19 @@ def getTwo(fpos, tpos):
 	</tr>"""
 	return fime
 
-def getOne(fpos):
+def getOne(olist, fpos):
 	fime = """
 	<tr>
 		<td><img src = "images/""" + str(fpos) + """.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
 		<td>""" + str(fpos) + """</td>
+	</tr>
+	<tr>
+		<td>""" + olist.pop() + """</td>
+	</tr>
+	<tr>
+		<td>Number in stock:  """ + getStock(fpos) + """</td>
 	</tr>
 	<tr>
 		<td><input name = \"""" + str(fpos) + """\" type = "checkbox" value = "true"></input></td>
@@ -114,7 +156,7 @@ def getOne(fpos):
 	</tr>"""
 	return fime
 	
-def genCat(ulist):
+def genCat(ulist, dlist):
 	f = open('catalogue.html','w')
 
 	message = """<!doctype html>
@@ -137,13 +179,13 @@ def genCat(ulist):
 
 	while len(ulist) > 0:
 		if len(ulist) >= 4:
-			message = getFour(ulist.pop(), ulist.pop(), ulist.pop(), ulist.pop())
+			message = getFour(dlist, ulist.pop(), ulist.pop(), ulist.pop(), ulist.pop())
 		elif len(ulist) == 3:
-			message = getThree(ulist.pop(), ulist.pop(), ulist.pop())
+			message = getThree(dlist, ulist.pop(), ulist.pop(), ulist.pop())
 		elif len(ulist) == 2:
-			message = getTwo(ulist.pop(), ulist.pop())
+			message = getTwo(dlist, ulist.pop(), ulist.pop())
 		else:
-			message = getOne(ulist.pop())
+			message = getOne(dlist, ulist.pop())
 			
 		f.write(message)
 
@@ -163,8 +205,10 @@ print "Content-Type: text/html;charset=utf-8"
 print
 
 thislist = getAllInv()
+descriplist = getDescripList()
 thislist.reverse()
-genCat(thislist)
+descriplist.reverse()
+genCat(thislist, descriplist)
 
 print "I worked"
 
