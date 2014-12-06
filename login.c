@@ -184,6 +184,7 @@ void loginSuccess(aUser endUser) {
 			printf("%s", line);
 		}
 
+		fclose(catalogue);
 	} else {
 		printf("Traffic Database error");
 		exit(6);
