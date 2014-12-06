@@ -68,7 +68,12 @@ def generateBill(username, n):
 		total = total + int(pnum)*int(punit)
 	print """<tr><td>	</td><td>Total</td><td>$""" + str(total) + """</td></tr>"""
 	print """</table>
-	<h3><a href = ../thankyou.html>CHECKOUT</a></h3>
+	<h3>
+	<form name="submit" method="post" action="generateEnd.py">
+	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
+	<input type="submit" value="Checkout"></input>
+	</form>
+	</h3>
 	<p><a href = ../index.html>HOME</a></p>
 	<p><a href = ../catalogue.html>CATALOGUE</a></p>
 	</body>
