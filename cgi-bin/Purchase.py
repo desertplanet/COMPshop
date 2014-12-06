@@ -27,8 +27,14 @@ def generateError():
 	width:40%;">
 	<body>
 	<p>Since you are not logged in, your order could not be processed.</p>
-	<p>Please log in by clicking <a href = ../login.html>here</a>.</p>
-	<p>To return to the catalogue, click <a href = ../catalogue.html>here</a>.</p>
+	<form name="goback2home" method="post" action="../index.html">
+	<input name = "username" type = "hidden" value ="null"></input>
+	<input type = "submit" value = "home"></input>
+	</form>
+	<form name="goback" method="post" action="../c.cgi">
+	<input name = "username" type = "hidden" value ="null"></input>
+	<input type = "submit" value = "catalogue"></input>
+	</form>
 	</body>
 	</html>"""
 
