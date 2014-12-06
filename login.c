@@ -23,7 +23,7 @@ typedef struct USER {
  * The following function reads desired attributes from a line in Members.csv and
  * stores them, associating them with the user that is passed.
 */
-void populateVars(char *line, aUser *user) {
+void populateNUP(char *line, aUser *user) {
 
 		int i = 0;
 		int j = 0;
@@ -81,7 +81,7 @@ aUser *getMembersList(void) {
 
 	if (fgets(line,100,members) != NULL) {
 
-		populateVars(line,t);
+		populateNUP(line,t);
 
 		while (fgets(line,100,members) != NULL) {
 
@@ -91,8 +91,9 @@ aUser *getMembersList(void) {
 			t->fullName = (char *)malloc(40);
 			t->userName = (char *)malloc(30);
 			t->passWord = (char *)malloc(30);
+			t->next = NULL;
 
-			populateVars(line,t);
+			populateNUP(line,t);
 		}
 	} else {
 		printf("There are no registered members.\n");
@@ -102,6 +103,8 @@ aUser *getMembersList(void) {
 
 	fclose(members);
 }
+
+
 
 /*
  * The following function takes an encoded input string and extracts the username and pwd
@@ -230,13 +233,13 @@ void freeUserList(aUser *p) {
  * The uname and pwd are compared against the values in the db and then either a login success 
  * or a login failure action is fired as defined above. Finally there is some cleanup to be done.
 */
-int main(void) {
+int main(int argc, char *argv[]) {
 
 	printf("content-type: text/html\n\n");
 
-	aUser *head = getMembersList();
+	aUser *members = getMembersList();
 
-	aUser *p = head;
+	aUser *p = members;
 
 	aUser endUser;
 	endUser.userName = (char *)malloc(30);
@@ -267,7 +270,7 @@ int main(void) {
 
 	//Cleanup
 
-	freeUserList(head);
+	freeUserList(members);
 	free(endUser.userName);
 	free(endUser.passWord);
 
