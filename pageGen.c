@@ -8,6 +8,8 @@ int main (int argc, char *argv[]) {
 
 		char line[120];
 
+		printf("content-type: text/html");
+
 		while (fgets(line,120,f) != NULL) {
 			printf("%s", line);
 		}
