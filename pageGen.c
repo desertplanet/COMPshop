@@ -14,24 +14,28 @@ int main (int argc, char *argv[]) {
 
 		int i = 9;
 
-		while (input[i] != '&') {
-			uName[i] = input[i];
-		}
+		// while (input[i] != '&') {
+		// 	uName[i] = input[i];
+		// }
 
 		scanf(syscmd,"python createCatalogue.py %s", uName);
-		
-		system(syscmd);
-
-	
-		FILE *f = fopen("catalogue.html","rt");
-
-		char line[120];
 
 		printf("content-type: text/html");
 
-		while (fgets(line,120,f) != NULL) {
-			printf("%s", line);
-		}
+		printf("%s\n", syscmd);
+		
+		// system(syscmd);
+
+	
+		// FILE *f = fopen("catalogue.html","rt");
+
+		// char line[120];
+
+		
+
+		// while (fgets(line,120,f) != NULL) {
+		// 	printf("%s", line);
+		// }
 
 	return(0);
 }
