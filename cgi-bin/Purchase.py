@@ -77,6 +77,7 @@ def generateBill(username, n):
 	<form name="goback2home" method="post" action="../index.html">
 	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
 	<input type = "submit" value = "home"></input>
+	</form>
 	<form name="goback" method="post" action="../c.cgi">
 	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
 	<input type = "submit" value = "catalogue"></input>
