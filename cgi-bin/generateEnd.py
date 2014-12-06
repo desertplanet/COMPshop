@@ -23,7 +23,7 @@ print """
 margin:0 auto;
 width:40%;">
 <h3>Thank you for your purchase!</h3>
-<p>You can return to the home page by clicking <a href = index.html>here</a>.</p>
+<p>You can return to the home page by clicking <a href = ../index.html>here</a>.</p>
 <form name="goback" method="post" action="../c.cgi">
 <input name = "username" type = "hidden" value =\"""" + str(liuser) + """\"></input>
 <p>To return to the catalogue, click <input type = "submit" value = "here"></input>.</p>
