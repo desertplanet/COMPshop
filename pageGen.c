@@ -14,7 +14,7 @@ int main (int argc, char *argv[]) {
 
 		int i = 9;
 
-		while (input[i] != '\0') {
+		while (input[i] != '&') {
 			uName[i] = input[i];
 		}
 
