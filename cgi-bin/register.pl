@@ -10,18 +10,14 @@ $theuser = '' unless $theuser;
 my $username = $q->param('username');
 my $userBadChar = 0;
 my $pwBadChar = 0;
-foreach $char (split('',$username)){
-	if ($char = \W){
-		$userBadChar=1;
-	}
+if ($username =~ m/[^a-zA-Z0-9]/){
+$userBadChar=1;
+}
+my $password = $q->param('password');
+if ($password =~ m/[^a-zA-Z0-9 ]/){
+$pwBadChar=1;
 }
 
-my $password = $q->param('password');
-foreach $pwchar (split('',$password)){
-	if ($pwchar = \W and $pwchar = \S){
-		$pwBadChar = 1;
-	}
-}
 my $verifypassword = $q->param('verifypassword');
 
 if($name eq "" || $username eq "" || $password eq "" || $verifypassword eq "") {
@@ -38,7 +34,7 @@ else{
 	$new=join(',',$name,$username,$password);
 }
 
-my $file = '../Members.csv';
+my $file = '../data/Members.csv';
 open(MEMBERS, "<$file") or die "Could not access member directory\n";
 my @members = <MEMBERS>;
 close(MEMBERS);
@@ -60,7 +56,9 @@ if ($taken == 1){
 
 }
 else{
-	open(MEMBERS,'>>../Members.csv') or die "oops";
+	open(MEMBERS,'>>../data/Members.csv') or die "oops";
 	print MEMBERS "$new\n";
 	close (MEMBERS);
+print('You have been registered!</br><a href="../login.html">Login</a>');
+
 }
