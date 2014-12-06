@@ -10,8 +10,10 @@
 margin:0 auto;
 width:40%;">
 <h3>Thank you for your purchase!</h3>
+<form name="submit" method="post" action="cgi-bin/createCatalogue.py">
+<input name = "username" type = "hidden" value ="duned"></input>
 <p>You can return to the home page by clicking <a href = index.html>here</a>.</p>
-<p>To return to the catalogue, click <a href = catalogue.html>here</a>.</p>
+<p>To return to the catalogue, click <input name="submit" type="submit" value="here"></input>.</p>
 </form>
 </body>
 </html>
