@@ -6,7 +6,7 @@ void main(void) {
 	FILE *index = fopen("index.html","rt");
 
 
-	system("python createCatalogue.py null");
+	system("python cgi-bin/createCatalogue.py null");
 
 	char line[100];
 
@@ -15,4 +15,6 @@ void main(void) {
 	while (fgets(line,100,index) != NULL) {
 		printf("%s", line);
 	}
+
+	fclose(index);
 }
