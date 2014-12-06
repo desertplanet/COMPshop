@@ -25,8 +25,6 @@ int main (void) {
 
 		printf("content-type: text/html\n\n");
 
-		printf("%s\n", syscmd);
-
 		
 		system(syscmd);
 
@@ -40,6 +38,12 @@ int main (void) {
 		while (fgets(line,120,f) != NULL) {
 			printf("%s", line);
 		}
+
+		fclose(f);
+
+		free(syscmd);
+		free(input);
+		free(uName);
 
 	return 0;
 }
