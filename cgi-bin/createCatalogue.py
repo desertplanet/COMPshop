@@ -202,7 +202,9 @@ This method generates the HTML to be rendered for the catalogue from the current
 @param name The username
 '''	
 def genCat(ulist, dlist):
-	print """<!doctype html>
+	f = open('catalogue.html', 'wt')
+	
+	message = """<!doctype html>
 	<html>
 	<head>
 	<title>catalogue</title>
@@ -217,9 +219,9 @@ def genCat(ulist, dlist):
 	<form name="submit" method="post" action="cgi-bin/Purchase.py">
 	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
 	<table>"""
+	f.write(message)
 
 	while len(ulist) > 0:
-		message = ""
 		if len(ulist) >= 4:
 			message = getFour(dlist, ulist.pop(), ulist.pop(), ulist.pop(), ulist.pop())
 		elif len(ulist) == 3:
@@ -229,9 +231,9 @@ def genCat(ulist, dlist):
 		else:
 			message = getOne(dlist, ulist.pop())
 			
-		print message
+		f.write(message)
 
-	print """
+	message = """
 	</table>
 	<input name="submit" type="submit" value="buy me"></input>
 	</form>
@@ -241,6 +243,9 @@ def genCat(ulist, dlist):
 	</form>
 	</body>
 	</html>"""
+
+	f.write(message)
+	f.close()
 
 
 print "Content-Type: text/html;charset=utf-8"
