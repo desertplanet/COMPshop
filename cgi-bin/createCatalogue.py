@@ -3,8 +3,13 @@
 
 import sys
 import csv
+import cgi
 
-
+'''
+This method returns a list of the entire inventory, regardless of whether or not
+it is out of stock.
+@return A list with all the names of the inventory
+'''
 def getAllInv():
 	with open('data/Inventory.csv', 'rt') as cfile:
 		creader = csv.reader(cfile, delimiter=',', quotechar=' ')
@@ -12,7 +17,10 @@ def getAllInv():
 		for epup in creader:
 			crelist.append(epup[0])
 	return crelist
-
+'''
+This method returns a list of all the descriptions.
+@return A list with all the descriptions of everything in the inventory
+'''
 def getDescripList():
 	with open('data/Descriptions.csv', 'rt') as cfile:
 		creader = csv.reader(cfile, delimiter=',', quotechar=' ')
@@ -20,18 +28,27 @@ def getDescripList():
 		for epup in creader:
 			crelist.append(epup[1])
 	return crelist
-
+'''
+This method gets the amount of stock for the item
+@param pupname The item to get the amount of stock for
+@return The amount of stock
+'''
 def getStock(pupname):
 	with open('data/Inventory.csv', 'rt') as cfile:
 		creader = csv.reader(cfile, delimiter=',', quotechar=' ')
 		for epup in creader:
 			if str(epup[0]) == pupname:
 				return str(epup[1])
-
-def getDescription(pupname, samename, descrip):
-	return descrip
 	
-
+'''
+This method returns the HTML necessary to generate four items in a row
+@param olist The description list
+@param fpos The first item in the row
+@param tpos The second item in the row
+@param thpos The third item in the row
+@param fopos The fourth item in the row
+@return The HTML needed to render a row of 4 items
+'''
 def getFour(olist, fpos, tpos, thpos, fopos):
 	fime = """
 	<tr>
@@ -72,6 +89,14 @@ def getFour(olist, fpos, tpos, thpos, fopos):
 	</tr>"""
 	return fime
 
+'''
+This method returns the HTML necessary to generate three items in a row
+@param olist The description list
+@param fpos The first item in the row
+@param tpos The second item in the row
+@param thpos The third item in the row
+@return The HTML needed to render a row of 3 items
+'''
 def getThree(olist, fpos, tpos, thpos):
 	fime = """
 	<tr>
@@ -106,6 +131,13 @@ def getThree(olist, fpos, tpos, thpos):
 	</tr>"""
 	return fime
 
+'''
+This method returns the HTML necessary to generate two items in a row
+@param olist The description list
+@param fpos The first item in the row
+@param tpos The second item in the row
+@return The HTML needed to render a row of 2 items
+'''
 def getTwo(olist, fpos, tpos):
 	fime = """
 	<tr>
@@ -134,6 +166,12 @@ def getTwo(olist, fpos, tpos):
 	</tr>"""
 	return fime
 
+'''
+This method returns the HTML necessary to generate one item in a row
+@param olist The description list
+@param fpos The first item in the row
+@return The HTML needed to render a row of 1 item
+'''
 def getOne(olist, fpos):
 	fime = """
 	<tr>
@@ -155,7 +193,14 @@ def getOne(olist, fpos):
 		<td><input name = \"""" + str(fpos) + """num" type = "text" value = "0"></input></td>
 	</tr>"""
 	return fime
-	
+
+
+'''
+This method generates the HTML to be rendered for the catalogue from the current inventory.
+@param ulist The list that contains the name of all inventory items
+@param dlist The list that contains the description of all inventory items
+@param name The username
+'''	
 def genCat(ulist, dlist):
 	f = open('catalogue.html','w')
 
@@ -193,6 +238,10 @@ def genCat(ulist, dlist):
 	</table>
 	<input name="submit" type="submit" value="buy me"></input>
 	</form>
+	<form name="logout" method="post" action="b.cgi">
+	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
+	<input name="logout" type="submit" value="Log out"></input>
+	</form>
 	</body>
 	</html>"""
 
@@ -204,10 +253,15 @@ def genCat(ulist, dlist):
 print "Content-Type: text/html;charset=utf-8"
 print
 
+'''
+Get the inventory and description lists
+Since lists are LIFO, reverse them
+'''
 thislist = getAllInv()
 descriplist = getDescripList()
 thislist.reverse()
 descriplist.reverse()
+
 genCat(thislist, descriplist)
 
 print "I worked"
