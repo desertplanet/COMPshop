@@ -159,7 +159,7 @@ listcopy.reverse()
 2. If the hidden field is empty, user is not logged in
 	- Generate error page
 """
-if liuser != "":
+if liuser != "null":
 	isLogged = False
 	with open('../data/LoggedIn.csv', 'rt') as logfile:
 		logreader = csv.reader(logfile, delimiter=',', quotechar=' ')
