@@ -262,8 +262,6 @@ descriplist.reverse()
 
 genCat(thislist, descriplist)
 
-print "I worked"
-
 
 
 
