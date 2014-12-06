@@ -10,17 +10,13 @@ $theuser = '' unless $theuser;
 my $username = $q->param('username');
 my $userBadChar = 0;
 my $pwBadChar = 0;
-foreach $char (split('',$username)){
-	if ($char = \W){
-		$userBadChar=1;
-	}
+if ($username =~ m/[^a-zA-Z0-9]/){
+$userBadChar=1;
 }
 
 my $password = $q->param('password');
-foreach $pwchar (split('',$password)){
-	if ($pwchar = \W and $pwchar = \S){
-		$pwBadChar = 1;
-	}
+if ($password =~ m/[^a-zA-Z0-9 ]/){
+$pwBadChar=1;
 }
 my $verifypassword = $q->param('verifypassword');
 
