@@ -58,8 +58,8 @@ a:hover.login{
 	z-index: 1;
 }
 #bone{
-	width:100em;
-	height:100em;
+	width:36em;
+	height:10em;
 	background-image:url('../images/bone3.svg');
 	background-repeat:no-repeat;
 	background-position:center;
