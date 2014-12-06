@@ -5,7 +5,8 @@ void main(void) {
 
 	FILE *index = fopen("index.html","rt");
 
-	system("python createCatalogue.py \" \"");
+
+	system("python createCatalogue.py null");
 
 	char line[100];
 
