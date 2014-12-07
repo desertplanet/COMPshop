@@ -21,7 +21,7 @@ int main (void) {
 			i++;
 		}
 
-		sprintf(syscmd,"python cgi-bin/createCatalogue.py %s",uName);
+		sprintf(syscmd,"python cgi-bin/createcatsplit.py %s",uName);
 
 		printf("content-type: text/html\n\n");
 

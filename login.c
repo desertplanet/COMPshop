@@ -168,7 +168,7 @@ void loginSuccess(aUser endUser) {
 
 		char sysCmd[100];
 
-		sprintf(sysCmd,"python cgi-bin/createCatalogue.py %s", endUser.userName);
+		sprintf(sysCmd,"python cgi-bin/createcatsplit.py %s", endUser.userName);
 
 		system(sysCmd);
 

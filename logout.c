@@ -6,7 +6,7 @@ void main(void) {
 	FILE *index = fopen("index.html","rt");
 
 
-	system("python cgi-bin/createCatalogue.py null");
+	system("python cgi-bin/createcatsplit.py null");
 
 	char line[100];
 
