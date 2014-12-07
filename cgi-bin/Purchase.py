@@ -34,7 +34,7 @@ def generateError():
 	<input name = "username" type = "hidden" value ="null"></input>
 	<input type = "submit" value = "log in"></input>
 	</form>
-	<form name="goback" method="post" action="../c.cgi">
+	<form name="goback" method="post" action="c.cgi">
 	<input name = "username" type = "hidden" value ="null"></input>
 	<input type = "submit" value = "catalogue"></input>
 	</form>
@@ -88,11 +88,11 @@ def generateBill(username, n):
 	<input type="submit" value="Checkout"></input>
 	</form>
 	</h3>
-	<form name="goback2home" method="post" action="../index.html">
+	<form name="goback2home" method="post" action="index.html">
 	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
 	<input type = "submit" value = "home"></input>
 	</form>
-	<form name="goback" method="post" action="../c.cgi">
+	<form name="goback" method="post" action="c.cgi">
 	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
 	<input type = "submit" value = "catalogue"></input>
 	</form>

@@ -226,7 +226,7 @@ def genCat(urlist):
 
 	if str(sys.argv[1]) != "null":
 		fwr.write("""
-		<form name="logout" method="post" action="b.cgi">
+		<form name="logout" method="post" action="cgi-bin/b.cgi">
 		<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
 		<input class = "bufferbutton" type="submit" value="Log out"></input>
 		</form>""")
