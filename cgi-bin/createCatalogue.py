@@ -207,14 +207,12 @@ def genCat(ulist, dlist):
 	message = """<!doctype html>
 	<html>
 	<head>
+	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 	<title>catalogue</title>
 	<style type="text/css"></style>
 	</head>
-	<body style="color:black; font-family:helvetica;">
-	<div style="float:left; width:100%;">
-	<div style="text-align:center;
-	margin:0 auto;
-	width:40%;">
+	<div id="home">
+	<center>
 	<h1>Catalogue</h1>
 	<form name="submit" method="post" action="cgi-bin/Purchase.py">
 	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
@@ -241,6 +239,8 @@ def genCat(ulist, dlist):
 	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
 	<input name="logout" type="submit" value="Log out"></input>
 	</form>
+	</center>
+	</div>
 	</body>
 	</html>"""
 
