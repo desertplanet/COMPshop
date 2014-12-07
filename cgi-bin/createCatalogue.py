@@ -248,9 +248,6 @@ def genCat(ulist, dlist):
 	f.close()
 
 
-print "Content-Type: text/html;charset=utf-8"
-print
-
 '''
 Get the inventory and description lists
 Since lists are LIFO, reverse them
