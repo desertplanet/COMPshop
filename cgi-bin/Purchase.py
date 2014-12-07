@@ -61,7 +61,8 @@ def generateBill(username, n):
 	<div style="text-align:center;
 	margin:0 auto;
 	width:40%;">
-	<body>"""
+	<body>
+	<center>"""
 	print """<h3>Hello, """ + str(username) + """.  Please verify your bill below.</h3>"""	
 	print """<table>"""
 	print """<thead> <td>Puppies ordered</td> <td>Number ordered</td> <td>Unit Rental Price</td></thead>"""	
@@ -74,6 +75,7 @@ def generateBill(username, n):
 		total = total + int(pnum)*int(punit)
 	print """<tr><td>	</td><td>Total</td><td>$""" + str(total) + """</td></tr>"""
 	print """</table>
+	</center>
 	<h3>
 	<form name="submit" method="post" action="generateEnd.py">
 	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
