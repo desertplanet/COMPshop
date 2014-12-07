@@ -6,6 +6,9 @@ body{
 	color:#dbfdeb;
 	text-align:center;
 }
+p{
+	margin:0 auto;
+}
 h1.index{
 	font-weight:300;
 	font-size:3em;
@@ -39,11 +42,12 @@ a:hover.login{
 /*	background-color:#60b087;*/
 	background-color:#fe8a77;
 	position:absolute;
+	overflow:auto;
 }
 #navigation{
 	width:36em;
-	height: 100%;
-	margin:5em auto 0 auto;
+	margin:5em auto;
+	padding:1em;
 	background-image: url('../images/Puppies.png');
 	background-repeat: no-repeat;
 	background-size: 30em;
