@@ -194,7 +194,7 @@ def genCat(urlist):
 	mewssage = """<!doctype html>
 	<html>
 	<head>
-	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
 	<title>catalogue</title>
 	<style type="text/css"></style>
 	</head>
