@@ -161,3 +161,7 @@ td {
     -webkit-border-radius: 0.5em;
     -moz-border-radius: 0.5em;
 }
+#bill{
+	position:relative;
+	top:25%;
+}
