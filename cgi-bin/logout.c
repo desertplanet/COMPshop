@@ -8,7 +8,7 @@ typedef struct USER {
 } aUser;
 
 aUser *parseLoggedIn(void) {
-	FILE *loggedin = fopen("data/LoggedIn.csv","rt");
+	FILE *loggedin = fopen("../data/LoggedIn.csv","rt");
 
 	aUser *head = (aUser *)malloc(sizeof(aUser));
 
@@ -67,7 +67,7 @@ void updateUsers(aUser endUser, aUser *head) {
 		t = t->next;
 	}
 
-	FILE *loggedin = fopen("data/LoggedIn.csv","w");
+	FILE *loggedin = fopen("../data/LoggedIn.csv","w");
 
 	aUser *p = head;
 
@@ -102,10 +102,10 @@ void main(void) {
 	}
 
 
-	FILE *index = fopen("index.html","rt");
+	FILE *index = fopen("../index.html","rt");
 
 
-	system("python cgi-bin/createcatsplit.py null");
+	system("python createcatsplit.py null");
 
 	char line[100];
 
@@ -114,11 +114,6 @@ void main(void) {
 	aUser *t = parseLoggedIn();
 
 	updateUsers(endUser,t);
-
-	// while (t != NULL) {
-	// 	printf("%s\n",t->userName);
-	// 	t = t->next;
-	// }
 	
 
 	while (fgets(line,100,index) != NULL) {

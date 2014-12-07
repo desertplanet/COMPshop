@@ -21,7 +21,7 @@ int main (void) {
 			i++;
 		}
 
-		sprintf(syscmd,"python cgi-bin/createcatsplit.py %s",uName);
+		sprintf(syscmd,"python createcatsplit.py %s",uName);
 
 		printf("content-type: text/html\n\n");
 
@@ -29,7 +29,7 @@ int main (void) {
 		system(syscmd);
 
 	
-		FILE *f = fopen("catalogue.html","rt");
+		FILE *f = fopen("../catalogue.html","rt");
 
 		char line[120];
 

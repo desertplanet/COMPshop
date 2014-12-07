@@ -60,7 +60,7 @@ void populateVars(char *line, aUser *user) {
 */
 aUser *getMembersList(void) {
 
-	FILE *members = fopen("data/Members.csv","rt");
+	FILE *members = fopen("../data/Members.csv","rt");
 
 	if (members == NULL) {
 		printf("There was a problem loading the csv database.\n");
@@ -162,18 +162,18 @@ int verifyInput(aUser endUser, aUser *m) {
  * with one line in the form replaced to reflect the username of the newly logged in user.
 */
 void loginSuccess(aUser endUser) {
-	FILE *loggedIn = fopen("data/LoggedIn.csv","a");
+	FILE *loggedIn = fopen("../data/LoggedIn.csv","a");
 	if (loggedIn != NULL) {
 		fprintf(loggedIn, "%s\n", endUser.userName);
 
 		char sysCmd[100];
 
-		sprintf(sysCmd,"python cgi-bin/createcatsplit.py %s", endUser.userName);
+		sprintf(sysCmd,"python createcatsplit.py %s", endUser.userName);
 
 		system(sysCmd);
 
 		
-		FILE *catalogue = fopen("catalogue.html","rt");
+		FILE *catalogue = fopen("../catalogue.html","rt");
 
 		char line[100];
 
@@ -199,7 +199,7 @@ void loginSuccess(aUser endUser) {
 */
 void loginFailure(void){
 	
-	FILE *error = fopen("pwderror.html","rt");
+	FILE *error = fopen("../pwderror.html","rt");
 
 	char line[80];
 
