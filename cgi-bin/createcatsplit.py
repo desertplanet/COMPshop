@@ -40,10 +40,10 @@ def getFour(fpos, tpos, thpos, fopos):
 		<td><img src = "images/""" + fopos[0] + """.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td>""" + fpos[0] + """</td>
-		<td>""" + tpos[0] + """</td>
-		<td>""" + thpos[0] + """</td>
-		<td>""" + fopos[0] + """</td>
+		<td class="breed">""" + fpos[0] + """</td>
+		<td class="breed">""" + tpos[0] + """</td>
+		<td class="breed">""" + thpos[0] + """</td>
+		<td class="breed">""" + fopos[0] + """</td>
 	</tr>
 	<tr>
 		<td>""" + str(fpos[3]) + """</td>
@@ -58,17 +58,20 @@ def getFour(fpos, tpos, thpos, fopos):
 		<td>Number in stock:  """ + fopos[1] + """</td>
 	</tr>
 	<tr>
-		<td><input name = \"""" + fpos[0] + """\" type = "checkbox" value = "true"></input></td>
-		<td><input name = \"""" + tpos[0] + """\" type = "checkbox" value = "true"></input></td>
-		<td><input name = \"""" + thpos[0] + """\" type = "checkbox" value = "true"></input></td>
-		<td><input name = \"""" + fopos[0] + """\" type = "checkbox" value = "true"></input></td>
+		<td><input name = \"""" + fpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + fpos[0] + """num" type = "text" value = "0"></input>
+		</td>
+		<td><input name = \"""" + tpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + tpos[0] + """num" type = "text" value = "0"></input>
+		</td>
+		<td><input name = \"""" + thpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + thpos[0] + """num" type = "text" value = "0"></input>
+		</td>
+		<td><input name = \"""" + fopos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + fopos[0] + """num" type = "text" value = "0"></input>
+		</td>
 	</tr>
-	<tr>
-		<td><input name = \"""" + fpos[0] + """num" type = "text" value = "0"></input></td>
-		<td><input name = \"""" + tpos[0] + """num" type = "text" value = "0"></input></td>
-		<td><input name = \"""" + thpos[0] + """num" type = "text" value = "0"></input></td>
-		<td><input name = \"""" + fopos[0] + """num" type = "text" value = "0"></input></td>
-	</tr>"""
+	"""
 
 	return fime
 
@@ -88,9 +91,9 @@ def getThree(fpos, tpos, thpos):
 		<td><img src = "images/""" + str(thpos[0]) + """.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td>""" + str(fpos[0]) + """</td>
-		<td>""" + str(tpos[0]) + """</td>
-		<td>""" + str(thpos[0]) + """</td>
+		<td class="breed">""" + str(fpos[0]) + """</td>
+		<td class="breed">""" + str(tpos[0]) + """</td>
+		<td class="breed">""" + str(thpos[0]) + """</td>
 	</tr>
 	<tr>
 		<td>""" + str(fpos[3]) + """</td>
@@ -102,15 +105,16 @@ def getThree(fpos, tpos, thpos):
 		<td>Number in stock:  """ + str(tpos[1]) + """</td>
 		<td>Number in stock:  """ + str(thpos[1]) + """</td>
 	</tr>
-	<tr>
-		<td><input name = \"""" + str(fpos[0]) + """\" type = "checkbox" value = "true"></input></td>
-		<td><input name = \"""" + str(tpos[0]) + """\" type = "checkbox" value = "true"></input></td>
-		<td><input name = \"""" + str(thpos[0]) + """\" type = "checkbox" value = "true"></input></td>
-	</tr>
-	<tr>
-		<td><input name = \"""" + str(fpos[0]) + """num" type = "text" value = "0"></input></td>
-		<td><input name = \"""" + str(tpos[0]) + """num" type = "text" value = "0"></input></td>
-		<td><input name = \"""" + str(thpos[0]) + """num" type = "text" value = "0"></input></td>
+		<tr>
+		<td><input name = \"""" + fpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + fpos[0] + """num" type = "text" value = "0"></input>
+		</td>
+		<td><input name = \"""" + tpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + tpos[0] + """num" type = "text" value = "0"></input>
+		</td>
+		<td><input name = \"""" + thpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + thpos[0] + """num" type = "text" value = "0"></input>
+		</td>
 	</tr>"""
 	return fime
 
@@ -128,8 +132,8 @@ def getTwo(fpos, tpos):
 		<td><img src = "images/""" + str(tpos[0]) + """.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td>""" + str(fpos[0]) + """</td>
-		<td>""" + str(tpos[0]) + """</td>
+		<td class="breed">""" + str(fpos[0]) + """</td>
+		<td class="breed">""" + str(tpos[0]) + """</td>
 	</tr>
 	<tr>
 		<td>""" + str(fpos[3]) + """</td>
@@ -140,12 +144,12 @@ def getTwo(fpos, tpos):
 		<td>Number in stock:  """ + str(tpos[1]) + """</td>
 	</tr>
 	<tr>
-		<td><input name = \"""" + str(fpos[0]) + """\" type = "checkbox" value = "true"></input></td>
-		<td><input name = \"""" + str(tpos[0]) + """\" type = "checkbox" value = "true"></input></td>
-	</tr>
-	<tr>
-		<td><input name = \"""" + str(fpos[0]) + """num" type = "text" value = "0"></input></td>
-		<td><input name = \"""" + str(tpos[0]) + """num" type = "text" value = "0"></input></td>
+		<td><input name = \"""" + fpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + fpos[0] + """num" type = "text" value = "0"></input>
+		</td>
+		<td><input name = \"""" + tpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + tpos[0] + """num" type = "text" value = "0"></input>
+		</td>
 	</tr>"""
 	return fime
 
@@ -170,10 +174,9 @@ def getOne(olist, fpos):
 		<td>Number in stock:  """ + str(fpos[1]) + """</td>
 	</tr>
 	<tr>
-		<td><input name = \"""" + str(fpos[0]) + """\" type = "checkbox" value = "true"></input></td>
-	</tr>
-	<tr>
-		<td><input name = \"""" + str(fpos[0]) + """num" type = "text" value = "0"></input></td>
+		<td><input name = \"""" + fpos[0] + """\" type = "checkbox" value = "true"></input>
+			<input class="catalogue" name = \"""" + fpos[0] + """num" type = "text" value = "0"></input>
+		</td>
 	</tr>"""
 	return fime
 
@@ -196,7 +199,8 @@ def genCat(urlist):
 	<style type="text/css"></style>
 	</head>
 	<div id="home">
-	<center>
+	<div id="yellow">
+	<div id="catalogue">
 	<h1>Catalogue</h1>
 	<form name="submit" method="post" action="cgi-bin/Purchase.py">
 	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
@@ -221,7 +225,8 @@ def genCat(urlist):
 	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
 	<input type="submit" value="Log out"></input>
 	</form>
-	</center>
+	</div>
+	</div>
 	</div>
 	</body>
 	</html>"""

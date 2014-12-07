@@ -6,7 +6,8 @@
 	<style type="text/css"></style>
 	</head>
 	<div id="home">
-	<center>
+	<div id="yellow">
+	<div id="catalogue">
 	<h1>Catalogue</h1>
 	<form name="submit" method="post" action="cgi-bin/Purchase.py">
 	<input name = "username" type = "hidden" value ="null"></input>
@@ -18,10 +19,10 @@
 		<td><img src = "images/Labrador.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td>Dalmation</td>
-		<td>Dane</td>
-		<td>Husky</td>
-		<td>Labrador</td>
+		<td class="breed">Dalmation</td>
+		<td class="breed">Dane</td>
+		<td class="breed">Husky</td>
+		<td class="breed">Labrador</td>
 	</tr>
 	<tr>
 		<td>Spotted fun</td>
@@ -36,16 +37,18 @@
 		<td>Number in stock:  2</td>
 	</tr>
 	<tr>
-		<td><input name = "Dalmation" type = "checkbox" value = "true"></input></td>
-		<td><input name = "Dane" type = "checkbox" value = "true"></input></td>
-		<td><input name = "Husky" type = "checkbox" value = "true"></input></td>
-		<td><input name = "Labrador" type = "checkbox" value = "true"></input></td>
-	</tr>
-	<tr>
-		<td><input name = "Dalmationnum" type = "text" value = "0"></input></td>
-		<td><input name = "Danenum" type = "text" value = "0"></input></td>
-		<td><input name = "Huskynum" type = "text" value = "0"></input></td>
-		<td><input name = "Labradornum" type = "text" value = "0"></input></td>
+		<td><input name = "Dalmation" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Dalmationnum" type = "text" value = "0"></input>
+		</td>
+		<td><input name = "Dane" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Danenum" type = "text" value = "0"></input>
+		</td>
+		<td><input name = "Husky" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Huskynum" type = "text" value = "0"></input>
+		</td>
+		<td><input name = "Labrador" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Labradornum" type = "text" value = "0"></input>
+		</td>
 	</tr>
 	<tr>
 		<td><img src = "images/Pitbull.jpg" width="200" height="200"> </img></td>
@@ -54,10 +57,10 @@
 		<td><img src = "images/Retriever.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td>Pitbull</td>
-		<td>Pomeranian</td>
-		<td>Pug</td>
-		<td>Retriever</td>
+		<td class="breed">Pitbull</td>
+		<td class="breed">Pomeranian</td>
+		<td class="breed">Pug</td>
+		<td class="breed">Retriever</td>
 	</tr>
 	<tr>
 		<td>Stubby fun</td>
@@ -72,24 +75,27 @@
 		<td>Number in stock:  4</td>
 	</tr>
 	<tr>
-		<td><input name = "Pitbull" type = "checkbox" value = "true"></input></td>
-		<td><input name = "Pomeranian" type = "checkbox" value = "true"></input></td>
-		<td><input name = "Pug" type = "checkbox" value = "true"></input></td>
-		<td><input name = "Retriever" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Pitbull" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Pitbullnum" type = "text" value = "0"></input>
+		</td>
+		<td><input name = "Pomeranian" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Pomeraniannum" type = "text" value = "0"></input>
+		</td>
+		<td><input name = "Pug" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Pugnum" type = "text" value = "0"></input>
+		</td>
+		<td><input name = "Retriever" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Retrievernum" type = "text" value = "0"></input>
+		</td>
 	</tr>
-	<tr>
-		<td><input name = "Pitbullnum" type = "text" value = "0"></input></td>
-		<td><input name = "Pomeraniannum" type = "text" value = "0"></input></td>
-		<td><input name = "Pugnum" type = "text" value = "0"></input></td>
-		<td><input name = "Retrievernum" type = "text" value = "0"></input></td>
-	</tr>
+
 	<tr>
 		<td><img src = "images/Shiba.jpg" width="200" height="200"> </img></td>
 		<td><img src = "images/Terrier.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td>Shiba</td>
-		<td>Terrier</td>
+		<td class="breed">Shiba</td>
+		<td class="breed">Terrier</td>
 	</tr>
 	<tr>
 		<td>Meme fun</td>
@@ -100,13 +106,14 @@
 		<td>Number in stock:  0</td>
 	</tr>
 	<tr>
-		<td><input name = "Shiba" type = "checkbox" value = "true"></input></td>
-		<td><input name = "Terrier" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Shiba" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Shibanum" type = "text" value = "0"></input>
+		</td>
+		<td><input name = "Terrier" type = "checkbox" value = "true"></input>
+			<input class = "catalogue" name = "Terriernum" type = "text" value = "0"></input>
+		</td>
 	</tr>
-	<tr>
-		<td><input name = "Shibanum" type = "text" value = "0"></input></td>
-		<td><input name = "Terriernum" type = "text" value = "0"></input></td>
-	</tr>
+
 	</table>
 	<input name="submit" type="submit" value="buy me"></input>
 	</form>
@@ -114,7 +121,8 @@
 	<input name = "username" type = "hidden" value ="null"></input>
 	<input type="submit" value="Log out"></input>
 	</form>
-	</center>
 	</div>
+</div>
+</div>
 	</body>
 	</html>
