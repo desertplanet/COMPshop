@@ -24,11 +24,14 @@ def generateError():
 	<body style="color:black; font-family:helvetica;">
 	<div id = "home">
 	<center>
-	<body>
 	<p>Since you are not logged in, your order could not be processed.</p>
 	<form name="goback2home" method="post" action="../index.html">
 	<input name = "username" type = "hidden" value ="null"></input>
 	<input type = "submit" value = "home"></input>
+	</form>
+	<form name="goback2login" method="post" action="../login.html">
+	<input name = "username" type = "hidden" value ="null"></input>
+	<input type = "submit" value = "log in"></input>
 	</form>
 	<form name="goback" method="post" action="../c.cgi">
 	<input name = "username" type = "hidden" value ="null"></input>
@@ -57,12 +60,14 @@ def generateBill(username, n):
 	<title>Bill</title>
 	<style type="text/css"></style>
 	</head>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+	<title>Not Logged In</title>
+	<style type="text/css"></style>
+	</head>
 	<body style="color:black; font-family:helvetica;">
-	<div style="float:left; width:100%;">
-	<div style="text-align:center;
-	margin:0 auto;
-	width:40%;">
-	<body>"""
+	<div id = "home">
+	<div id = "bill">
+	<center>"""
 	print """<h3>Hello, """ + str(username) + """.  Please verify your bill below.</h3>"""	
 	print """<table>"""
 	print """<thead> <td>Puppies ordered</td> <td>Number ordered</td> <td>Unit Rental Price</td></thead>"""	
@@ -89,6 +94,9 @@ def generateBill(username, n):
 	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
 	<input type = "submit" value = "catalogue"></input>
 	</form>
+	</center>
+	</div>
+	</div>
 	</body>
 	</html>"""
 
