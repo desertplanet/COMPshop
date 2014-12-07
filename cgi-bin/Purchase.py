@@ -17,14 +17,13 @@ def generateError():
 	<!doctype html>
 	<html>
 	<head>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
 	<title>Not Logged In</title>
 	<style type="text/css"></style>
 	</head>
 	<body style="color:black; font-family:helvetica;">
-	<div style="float:left; width:100%;">
-	<div style="text-align:center;
-	margin:0 auto;
-	width:40%;">
+	<div id = "home">
+	<center>
 	<body>
 	<p>Since you are not logged in, your order could not be processed.</p>
 	<form name="goback2home" method="post" action="../index.html">
@@ -35,6 +34,8 @@ def generateError():
 	<input name = "username" type = "hidden" value ="null"></input>
 	<input type = "submit" value = "catalogue"></input>
 	</form>
+	</center>
+	</div>
 	</body>
 	</html>"""
 
@@ -53,14 +54,11 @@ def generateBill(username, n):
 	<!doctype html>
 	<html>
 	<head>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
 	<title>Bill</title>
 	<style type="text/css"></style>
 	</head>
-	<body style="color:black; font-family:helvetica;">
-	<div style="float:left; width:100%;">
-	<div style="text-align:center;
-	margin:0 auto;
-	width:40%;">
+	<div id="home">
 	<body>
 	<center>"""
 	print """<h3>Hello, """ + str(username) + """.  Please verify your bill below.</h3>"""	
@@ -75,7 +73,6 @@ def generateBill(username, n):
 		total = total + int(pnum)*int(punit)
 	print """<tr><td>	</td><td>Total</td><td>$""" + str(total) + """</td></tr>"""
 	print """</table>
-	</center>
 	<h3>
 	<form name="submit" method="post" action="generateEnd.py">
 	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
@@ -90,6 +87,8 @@ def generateBill(username, n):
 	<input name = "username" type = "hidden" value =\"""" + str(username) + """\"></input>
 	<input type = "submit" value = "catalogue"></input>
 	</form>
+	</div>
+	</center>
 	</body>
 	</html>"""
 
