@@ -7,7 +7,7 @@ body{
 	text-align:center;
 }
 p{
-	margin:0 auto;
+	margin:2em auto;
 }
 h1.index{
 	font-weight:300;
@@ -47,35 +47,30 @@ a:hover.login{
 #navigation{
 	width:36em;
 	margin:5em auto;
-	padding:1em;
+}
+#puppy{
+	width:12em;
+	height:12em;
+	margin:0 auto;
 	background-image: url('../images/Puppies.png');
 	background-repeat: no-repeat;
-	background-size: 30em;
+	background-size: 12em;
 	background-position: center;
 }
 #links{
 	width:10em;
 	margin:3em auto 1.5em auto;
-		z-index: 5;
 
 }
 
-#Puppy{
-	position: absolute;
-	top: 170px;
-	left: 680px;
-	z-index: 1;
-}
 #bone{
 	width:36em;
-	height:10em;
+	height:8em;
 	background-image:url('../images/bone3.svg');
 	background-repeat:no-repeat;
 	background-position:center;
 	background-size:15em;
 }
-
-
 
 #login{
 	/*padding-top: 3em;*/
