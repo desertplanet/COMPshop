@@ -105,6 +105,7 @@ input:focus, input[type="password"]:focus,input[type="text"]:focus{
 	width:100%;
 	background-color:#fbf0a9;
 	color:#4e72c5;
+	padding-bottom:4em;
 }
 #catalogue{
 	width:90%;
@@ -145,6 +146,9 @@ td {
 .breed{
 	font-weight:bold;
 	font-size:1.5em;
+}
+.bufferbutton{
+	margin-top:2em;
 }
 #yellow input[type="checkbox"]{
 	width:2em;
