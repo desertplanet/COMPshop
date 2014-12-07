@@ -3,7 +3,6 @@ Registration.html
 register.pl
 index.html
 registration.html
-pwderror.html
 main.css
 register.css
 git log:  
@@ -13,6 +12,7 @@ login.c :  a.cgi
 logout.c : b.cgi
 pageGen.c : c.cgi
 login.html
+pwderror.html
 git log: 
 
 Lianna Yang 260515765
