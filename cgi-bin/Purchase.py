@@ -23,6 +23,7 @@ def generateError():
 	</head>
 	<body style="color:black; font-family:helvetica;">
 	<div id = "home">
+	<div id = "bill">
 	<center>
 	<p>Since you are not logged in, your order could not be processed.</p>
 	<form name="goback2home" method="post" action="../index.html">
@@ -38,6 +39,7 @@ def generateError():
 	<input type = "submit" value = "catalogue"></input>
 	</form>
 	</center>
+	</div>
 	</div>
 	</body>
 	</html>"""
