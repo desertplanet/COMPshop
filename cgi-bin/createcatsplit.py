@@ -201,6 +201,7 @@ def genCat(urlist):
 	<div id="home">
 	<div id="yellow">
 	<div id="catalogue">
+	<center>
 	<h1>Catalogue</h1>
 	<form name="submit" method="post" action="cgi-bin/Purchase.py">
 	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
@@ -219,7 +220,7 @@ def genCat(urlist):
 
 	mewssage = """
 	</table>
-	<input name="submit" type="submit" value="buy me"></input>
+	<input class = "bufferbutton" name="submit" type="submit" value="buy me"></input>
 	</form>"""
 	fwr.write(mewssage)
 
@@ -227,10 +228,11 @@ def genCat(urlist):
 		fwr.write("""
 		<form name="logout" method="post" action="b.cgi">
 		<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
-		<input type="submit" value="Log out"></input>
+		<input class = "bufferbutton" type="submit" value="Log out"></input>
 		</form>""")
 
 	fwr.write("""
+	</center>
 	</div>
 	</div>
 	</div>
