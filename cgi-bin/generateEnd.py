@@ -27,6 +27,10 @@ print """
 <input name = "username" type = "hidden" value =\"""" + str(liuser) + """\"></input>
 <p>To return to the catalogue, click <input type = "submit" value = "here"></input>.</p>
 </form>
+<form name="goback" method="post" action="../b.cgi">
+<input name = "username" type = "hidden" value =\"""" + str(liuser) + """\"></input>
+<p>To return to the catalogue, click <input type = "submit" value = "log out"></input>.</p>
+</form>
 </center>
 </div>
 </body>
