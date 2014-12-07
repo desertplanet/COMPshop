@@ -220,18 +220,23 @@ def genCat(urlist):
 	mewssage = """
 	</table>
 	<input name="submit" type="submit" value="buy me"></input>
-	</form>
-	<form name="logout" method="post" action="b.cgi">
-	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
-	<input type="submit" value="Log out"></input>
-	</form>
+	</form>"""
+	fwr.write(mewssage)
+
+	if str(sys.argv[1]) != "null":
+		fwr.write("""
+		<form name="logout" method="post" action="b.cgi">
+		<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
+		<input type="submit" value="Log out"></input>
+		</form>""")
+
+	fwr.write("""
 	</div>
 	</div>
 	</div>
 	</body>
-	</html>"""
+	</html>""")
 
-	fwr.write(mewssage)
 	fwr.close()
 
 
