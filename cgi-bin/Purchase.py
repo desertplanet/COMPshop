@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-import csv
+from random import randrange
 import cgi
 import cgitb
 cgitb.enable()
@@ -118,7 +118,11 @@ def removeInventory(lcpy):
 			newinvfile.write(writeline)
 	newinvfile.closed
 
-
+def randomRestock():
+	if randrange(10) > 0:
+		return randrange(3) + 1
+	else:
+		return 0
 """
 Gets all inputs from the catalogue.html page
 Gets the hidden username from the page
@@ -170,7 +174,10 @@ while len(splitlist) > 0:
 			listcopy.append(str(p[3]))
 	else:
 		listcopy.append(str(p[0]))
-		listcopy.append(int(p[1]))
+		if int(p[1]) == 0:
+			listcopy.append(randomRestock())
+		else:
+			listcopy.append(int(p[1]))
 		listcopy.append(int(p[2]))
 		listcopy.append(str(p[3]))
 
