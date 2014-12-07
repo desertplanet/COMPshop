@@ -17,18 +17,25 @@ def generateError():
 	<!doctype html>
 	<html>
 	<head>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
 	<title>Not Logged In</title>
 	<style type="text/css"></style>
 	</head>
 	<body style="color:black; font-family:helvetica;">
-	<div style="float:left; width:100%;">
-	<div style="text-align:center;
-	margin:0 auto;
-	width:40%;">
+	<div id = "home">
+	<center>
 	<body>
 	<p>Since you are not logged in, your order could not be processed.</p>
-	<p>Please log in by clicking <a href = ../login.html>here</a>.</p>
-	<p>To return to the catalogue, click <a href = ../catalogue.html>here</a>.</p>
+	<form name="goback2home" method="post" action="../index.html">
+	<input name = "username" type = "hidden" value ="null"></input>
+	<input type = "submit" value = "home"></input>
+	</form>
+	<form name="goback" method="post" action="../c.cgi">
+	<input name = "username" type = "hidden" value ="null"></input>
+	<input type = "submit" value = "catalogue"></input>
+	</form>
+	</center>
+	</div>
 	</body>
 	</html>"""
 
@@ -126,9 +133,6 @@ cofile.closed
 splitlist = colist.split("\n")
 splitlist.pop()
 splitlist.reverse()
-print "Content-Type: text/html;charset=utf-8"
-print
-print splitlist
 
 while len(splitlist) > 0:
 	nline = splitlist.pop()
