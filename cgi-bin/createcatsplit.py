@@ -189,7 +189,7 @@ This method generates the HTML to be rendered for the catalogue from the current
 '''	
 def genCat(urlist):
 
-	fwr = open('catalogue.html', 'wt')
+	fwr = open('../catalogue.html', 'wt')
 	
 	mewssage = """<!doctype html>
 	<html>
