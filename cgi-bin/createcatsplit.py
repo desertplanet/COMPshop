@@ -219,7 +219,7 @@ def genCat(urlist):
 	</form>
 	<form name="logout" method="post" action="b.cgi">
 	<input name = "username" type = "hidden" value =\"""" + str(sys.argv[1]) + """\"></input>
-	<input name="logout" type="submit" value="Log out"></input>
+	<input type="submit" value="Log out"></input>
 	</form>
 	</center>
 	</div>

@@ -1,16 +1,15 @@
 <!doctype html>
 	<html>
 	<head>
-	<title>catalogue</title>
 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+	<title>catalogue</title>
+	<style type="text/css"></style>
 	</head>
-<body>
-
-<div id="yellow">
-	
-	<form id ="catalogue" name="submit" method="post" action="cgi-bin/Purchase.py">
-		<h1 class="catalogue">Catalogue</h1>
-	<input name = "username" type = "hidden" value ="duned"></input>
+	<div id="home">
+	<center>
+	<h1>Catalogue</h1>
+	<form name="submit" method="post" action="cgi-bin/Purchase.py">
+	<input name = "username" type = "hidden" value ="null"></input>
 	<table>
 	<tr>
 		<td><img src = "images/Dalmation.jpg" width="200" height="200"> </img></td>
@@ -19,32 +18,35 @@
 		<td><img src = "images/Labrador.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td class="breed">Dalmation</td>
-		<td class="breed">Dane</td>
-		<td class="breed">Husky</td>
-		<td class="breed">Labrador</td>
+		<td>Dalmation</td>
+		<td>Dane</td>
+		<td>Husky</td>
+		<td>Labrador</td>
 	</tr>
 	<tr>
-		<td>Number in stock:  2</td>
-		<td>Number in stock:  2</td>
-		<td>Number in stock:  2</td>
-		<td>Number in stock:  4</td>
+		<td>Spotted fun</td>
+		<td>Stoic fun</td>
+		<td>Fluffy fun</td>
+		<td>Playful fun</td>
 	</tr>
 	<tr>
-		<td><input name = "Dalmation" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Dalmationnum" type = "text" value = "0">
-		</td>
-		<td><input name = "Dane" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Danenum" type = "text" value = "0"></input>
-		</td>
-		<td><input name = "Husky" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Huskynum" type = "text" value = "0"></input>
-		</td>
-		<td><input name = "Labrador" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Labradornum" type = "text" value = "0">
-		</td>
+		<td>Number in stock:  0</td>
+		<td>Number in stock:  2</td>
+		<td>Number in stock:  0</td>
+		<td>Number in stock:  2</td>
 	</tr>
-	
+	<tr>
+		<td><input name = "Dalmation" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Dane" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Husky" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Labrador" type = "checkbox" value = "true"></input></td>
+	</tr>
+	<tr>
+		<td><input name = "Dalmationnum" type = "text" value = "0"></input></td>
+		<td><input name = "Danenum" type = "text" value = "0"></input></td>
+		<td><input name = "Huskynum" type = "text" value = "0"></input></td>
+		<td><input name = "Labradornum" type = "text" value = "0"></input></td>
+	</tr>
 	<tr>
 		<td><img src = "images/Pitbull.jpg" width="200" height="200"> </img></td>
 		<td><img src = "images/Pomeranian.jpg" width="200" height="200"> </img></td>
@@ -52,51 +54,67 @@
 		<td><img src = "images/Retriever.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td class="breed">Pitbull</td>
-		<td class="breed">Pomeranian</td>
-		<td class="breed">Pug</td>
-		<td class="breed">Retriever</td>
+		<td>Pitbull</td>
+		<td>Pomeranian</td>
+		<td>Pug</td>
+		<td>Retriever</td>
+	</tr>
+	<tr>
+		<td>Stubby fun</td>
+		<td>Tiny fun</td>
+		<td>Funny-faces fun</td>
+		<td>Majestic fun</td>
 	</tr>
 	<tr>
 		<td>Number in stock:  6</td>
-		<td>Number in stock:  1</td>
-		<td>Number in stock:  3</td>
+		<td>Number in stock:  0</td>
+		<td>Number in stock:  0</td>
 		<td>Number in stock:  4</td>
 	</tr>
 	<tr>
-		<td><input name = "Pitbull" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Pitbullnum" type = "text" value = "0">
-		</td>
-		<td><input name = "Pomeranian" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Pomeraniannum" type = "text" value = "0"></input>
-		</td>
-		<td><input name = "Pug" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Pugnum" type = "text" value = "0"></input>
-		</td>
-		<td><input name = "Retriever" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Retrievernum" type = "text" value = "0">
-		</input></td>
+		<td><input name = "Pitbull" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Pomeranian" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Pug" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Retriever" type = "checkbox" value = "true"></input></td>
 	</tr>
-	
+	<tr>
+		<td><input name = "Pitbullnum" type = "text" value = "0"></input></td>
+		<td><input name = "Pomeraniannum" type = "text" value = "0"></input></td>
+		<td><input name = "Pugnum" type = "text" value = "0"></input></td>
+		<td><input name = "Retrievernum" type = "text" value = "0"></input></td>
+	</tr>
 	<tr>
 		<td><img src = "images/Shiba.jpg" width="200" height="200"> </img></td>
 		<td><img src = "images/Terrier.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
-		<td class="breed">Shiba</td>
-		<td class="breed">Terrier</td>
+		<td>Shiba</td>
+		<td>Terrier</td>
 	</tr>
 	<tr>
-		<td><input name = "Shiba" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Shibanum" type = "text" value = "0"></input>
-		</td>
-		<td><input name = "Terrier" type = "checkbox" value = "true"></input>
-			<input class = "catalogue" name = "Terriernum" type = "text" value = "0"></input>
-		</td>
+		<td>Meme fun</td>
+		<td>Itty-bitty fun</td>
+	</tr>
+	<tr>
+		<td>Number in stock:  1</td>
+		<td>Number in stock:  0</td>
+	</tr>
+	<tr>
+		<td><input name = "Shiba" type = "checkbox" value = "true"></input></td>
+		<td><input name = "Terrier" type = "checkbox" value = "true"></input></td>
+	</tr>
+	<tr>
+		<td><input name = "Shibanum" type = "text" value = "0"></input></td>
+		<td><input name = "Terriernum" type = "text" value = "0"></input></td>
 	</tr>
 	</table>
-	<input id ="submitcatalogue" name="submit" type="submit" value="buy me"></input>
+	<input name="submit" type="submit" value="buy me"></input>
 	</form>
-</div>
+	<form name="logout" method="post" action="b.cgi">
+	<input name = "username" type = "hidden" value ="null"></input>
+	<input type="submit" value="Log out"></input>
+	</form>
+	</center>
+	</div>
 	</body>
 	</html>
