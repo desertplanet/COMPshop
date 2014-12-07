@@ -34,10 +34,10 @@ This method returns the HTML necessary to generate four items in a row
 def getFour(fpos, tpos, thpos, fopos):
 	fime = """
 	<tr>
-		<td><img src = "images/""" + fpos[0] + """.jpg" width="200" height="200"> </img></td>
-		<td><img src = "images/""" + tpos[0] + """.jpg" width="200" height="200"> </img></td>
-		<td><img src = "images/""" + thpos[0] + """.jpg" width="200" height="200"> </img></td>
-		<td><img src = "images/""" + fopos[0] + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + fpos[0] + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + tpos[0] + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + thpos[0] + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + fopos[0] + """.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
 		<td class="breed">""" + fpos[0] + """</td>
@@ -86,9 +86,9 @@ This method returns the HTML necessary to generate three items in a row
 def getThree(fpos, tpos, thpos):
 	fime = """
 	<tr>
-		<td><img src = "images/""" + str(fpos[0]) + """.jpg" width="200" height="200"> </img></td>
-		<td><img src = "images/""" + str(tpos[0]) + """.jpg" width="200" height="200"> </img></td>
-		<td><img src = "images/""" + str(thpos[0]) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + str(fpos[0]) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + str(tpos[0]) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + str(thpos[0]) + """.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
 		<td class="breed">""" + str(fpos[0]) + """</td>
@@ -128,8 +128,8 @@ This method returns the HTML necessary to generate two items in a row
 def getTwo(fpos, tpos):
 	fime = """
 	<tr>
-		<td><img src = "images/""" + str(fpos[0]) + """.jpg" width="200" height="200"> </img></td>
-		<td><img src = "images/""" + str(tpos[0]) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + str(fpos[0]) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + str(tpos[0]) + """.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
 		<td class="breed">""" + str(fpos[0]) + """</td>
@@ -162,7 +162,7 @@ This method returns the HTML necessary to generate one item in a row
 def getOne(olist, fpos):
 	fime = """
 	<tr>
-		<td><img src = "images/""" + str(fpos[0]) + """.jpg" width="200" height="200"> </img></td>
+		<td><img src = "../images/""" + str(fpos[0]) + """.jpg" width="200" height="200"> </img></td>
 	</tr>
 	<tr>
 		<td>""" + str(fpos[0]) + """</td>
