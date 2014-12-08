@@ -119,7 +119,7 @@ def removeInventory(lcpy):
 	newinvfile.closed
 
 def randomRestock():
-	if randrange(10) > 0:
+	if randrange(10) > 4:
 		return randrange(3) + 1
 	else:
 		return 0
