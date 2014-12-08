@@ -41,6 +41,7 @@ aUser *parseLoggedIn(void) {
 	}
 
 	fclose(loggedin);
+	free(line);
 
 	return head;
 }
@@ -79,6 +80,14 @@ void updateUsers(aUser endUser, aUser *head) {
 	}
 
 	fclose(loggedin);
+}
+
+void freeUserList(aUser *p) {
+	if (p != NULL){
+		free(p->userName);
+		if (p->next != NULL) freeUserList(p->next);
+		free(p);
+	}
 }
 
 void main(void) {
@@ -124,6 +133,11 @@ void main(void) {
 	while (fgets(line,100,index) != NULL) {
 		printf("%s", line);
 	}
+
+	freeUserList(t);
+
+	free(endUser.userName);
+	free(input);
 
 	fclose(index);
 }
