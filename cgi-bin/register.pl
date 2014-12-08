@@ -12,13 +12,11 @@ my $userBadChar = 0;
 my $pwBadChar = 0;
 if ($username =~ m/[^a-zA-Z0-9]/){
 $userBadChar=1;
-print "$username";
 }
 
 my $password = $q->param('password');
 if ($password =~ m/[^a-zA-Z0-9 ]/){
 $pwBadChar=1;
-print "$password";
 }
 
 my $verifypassword = $q->param('verifypassword');
