@@ -136,8 +136,5 @@ void main(void) {
 
 	freeUserList(t);
 
-	free(endUser.userName);
-	free(input);
-
 	fclose(index);
 }
