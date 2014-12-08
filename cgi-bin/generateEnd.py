@@ -22,14 +22,17 @@ print """
 <div id="home">
 <center>
 <h3>Thank you for your purchase!</h3>
-<p>You can return to the home page by clicking <a href = ../index.html>here</a>.</p>
-<form name="goback" method="post" action="../c.cgi">
+<form name="goback2home" method="post" action="../index.html">
 <input name = "username" type = "hidden" value =\"""" + str(liuser) + """\"></input>
-<p>To return to the catalogue, click <input type = "submit" value = "here"></input>.</p>
+<p><input type = "submit" value = "home"></input></p>
+</form>
+<form name="goback2catalogue" method="post" action="../c.cgi">
+<input name = "username" type = "hidden" value =\"""" + str(liuser) + """\"></input>
+<p><input type = "submit" value = "catalogue"></input></p>
 </form>
 <form name="goback" method="post" action="../b.cgi">
 <input name = "username" type = "hidden" value =\"""" + str(liuser) + """\"></input>
-<p>To return to the catalogue, click <input type = "submit" value = "log out"></input>.</p>
+<p><input type = "submit" value = "log out"></input></p>
 </form>
 </center>
 </div>
