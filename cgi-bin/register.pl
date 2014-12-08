@@ -59,6 +59,17 @@ else{
 	open(MEMBERS,'>>../data/Members.csv') or die "oops";
 	print MEMBERS "$new\n";
 	close (MEMBERS);
-print('You have been registered!</br><a href="../login.html">Login</a>');
+print('<html><head>
+<link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+</head><body>
+
+<div id="home">
+<p style="position:relative;top:20%;">
+You have been registered!</br></br><a href="../login.html">Login</a>
+</p>
+</div>
+</body>
+</html>
+');
 
 }
